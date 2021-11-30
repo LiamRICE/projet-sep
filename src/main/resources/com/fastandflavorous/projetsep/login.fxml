@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fastandflavorous.projetsep.LoginController">
+   <children>
+      <Button fx:id="clientButton" layoutX="83.0" layoutY="159.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="133.0" text="Login as Client" onAction="#handleLoginType"/>
+      <Button fx:id="employeeButton" layoutX="368.0" layoutY="159.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="146.0" text="Login as Employee" onAction="#handleLoginType"/>
+      <Label fx:id="welcomeText" layoutX="256.0" layoutY="81.0" text="Login" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

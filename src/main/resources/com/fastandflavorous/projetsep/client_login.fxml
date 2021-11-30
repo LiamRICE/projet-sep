@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fastandflavorous.projetsep.LoginController">
+   <children>
+      <TextField id="tokenField" layoutX="245.0" layoutY="124.0" />
+      <Label layoutX="206.0" layoutY="128.0" text="Token :" />
+      <Button fx:id="clientSubmit" layoutX="340.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleClientLogin" text="Submit" />
+      <Label fx:id="clientWelcomeLabel" alignment="CENTER" layoutX="76.0" layoutY="216.0" prefHeight="111.0" prefWidth="436.0" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button id="returnToSelectLogin" layoutX="512.0" layoutY="348.0" mnemonicParsing="false" onAction="#returnToLoginType" text="Cancel" />
+      <Button fx:id="clientSubmitWithoutToken" layoutX="218.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleClientLogin" text="Continue without logging in" />
+   </children>
+</AnchorPane>
