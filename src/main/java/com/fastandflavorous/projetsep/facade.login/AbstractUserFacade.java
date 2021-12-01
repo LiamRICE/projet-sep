@@ -1,5 +1,7 @@
 package com.fastandflavorous.projetsep.facade.login;
 
+import com.fastandflavorous.projetsep.factory.users.AbstractUserFactory;
+import com.fastandflavorous.projetsep.factory.users.UserFactory;
 import com.fastandflavorous.projetsep.model.users.*;
 
 /**
@@ -7,29 +9,30 @@ import com.fastandflavorous.projetsep.model.users.*;
  */
 public abstract class AbstractUserFacade {
 
+    private AbstractUserFactory factory;
+
     /**
      * Default constructor
      */
     public AbstractUserFacade() {
+        this.factory = new UserFactory();
     }
 
     /**
-     * @param String 
+     * @param token
      * @return
      */
     public Client checkClientLogin(String token) {
-        // TODO implement here
-        return null;
+        return factory.checkClientLogin(token);
     }
 
     /**
-     * @param String 
-     * @param String 
+     * @param email
+     * @param password
      * @return
      */
     public Employee checkEmployeeLogin(String email, String password) {
-        // TODO implement here
-        return null;
+        return factory.checkEmployeeLogin(email, password);
     }
 
 }

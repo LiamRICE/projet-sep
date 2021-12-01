@@ -7,10 +7,14 @@ import java.util.*;
  */
 public class EmployeeManager {
 
+    private List<Employee> employees;
+    private static Object syncronizer = new Object();
+
     /**
      * Default constructor
      */
     public EmployeeManager() {
+        this.employees = new ArrayList<>();
     }
 
     /**
@@ -18,21 +22,34 @@ public class EmployeeManager {
      */
     private static EmployeeManager employeeManager;
 
+    public static EmployeeManager getEmployeeManager(){
+        if(EmployeeManager.employeeManager == null){
+            synchronized (EmployeeManager.syncronizer){
+                if(EmployeeManager.employeeManager == null){
+                    EmployeeManager.employeeManager = new EmployeeManager();
+                }
+            }
+        }
+        return EmployeeManager.employeeManager;
+    }
+
 
     /**
-     * @param Employee 
+     * @param employee
      * @return
      */
     public void addEmployee(Employee employee) {
-        // TODO implement here
+        if(employee!=null){
+            employees.add(employee);
+        }
     }
 
     /**
-     * @param Employee 
+     * @param employee
      * @return
      */
     public void removeEmployee(Employee employee) {
-        // TODO implement here
+        employees.remove(employee);
     }
 
     /**
@@ -44,8 +61,8 @@ public class EmployeeManager {
     }
 
     /**
-     * @param String 
-     * @param String 
+     * @param email
+     * @param password
      * @return
      */
     public boolean login(String email, String password) {
