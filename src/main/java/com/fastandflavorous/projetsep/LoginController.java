@@ -1,24 +1,20 @@
 package com.fastandflavorous.projetsep;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class LoginController {
 
     @FXML
-    private Button clientButton, employeeButton, returnToSelectLogin, employeeSubmit, clientSubmit, clientSubmitWithoutToken;
+    private Button employeeButton;
     @FXML
     private Label employeeWelcomeLabel, clientWelcomeLabel;
 
@@ -50,14 +46,13 @@ public class LoginController {
     }
 
     @FXML
-    protected void handleEmployeeLogin(ActionEvent e){
+    protected void handleEmployeeLogin(){
         // check if login is valid
         this.employeeWelcomeLabel.setText("Welcome to Fast and Flavorous!\nWork hard, we're watching you...");
     }
 
     @FXML
-    protected void handleClientLogin(ActionEvent e){
-        System.out.println("method called");
+    protected void handleClientLogin(){
         // check if login is valid
         this.clientWelcomeLabel.setText("Welcome to Fast and Flavorous!\nEnjoy your meal!");
     }
