@@ -9,6 +9,10 @@ module com.fastandflavorous.projetsep {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
+    exports com.fastandflavorous.projetsep.dao.users;
+    exports com.fastandflavorous.projetsep.model.users;
+    exports com.fastandflavorous.projetsep.factory.users;
+    exports com.fastandflavorous.projetsep.facade.login;
     opens com.fastandflavorous.projetsep to javafx.fxml;
     exports com.fastandflavorous.projetsep;
 }

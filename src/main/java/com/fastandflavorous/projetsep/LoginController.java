@@ -1,5 +1,7 @@
 package com.fastandflavorous.projetsep;
 
+import com.fastandflavorous.projetsep.facade.login.AbstractUserFacade;
+import com.fastandflavorous.projetsep.facade.login.UserFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,16 +9,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import com.fastandflavorous.projetsep.model.users.*;
 
 import java.io.IOException;
 
+/**
+ * 
+ */
 public class LoginController {
 
     @FXML
-    private Button employeeButton;
+    private Button employeeButton, clientSubmit, clientSubmitWithoutToken;
+
     @FXML
     private Label employeeWelcomeLabel, clientWelcomeLabel;
+
+    @FXML
+    private TextField tokenField, emailInput;
+
+    @FXML
+    private PasswordField passwordInput;
+
+    private AbstractUserFacade facade;
+
+    public LoginController(){
+        this.facade = new UserFacade();
+    }
 
     @FXML
     protected void handleLoginType(ActionEvent e) throws IOException {
@@ -47,13 +68,47 @@ public class LoginController {
 
     @FXML
     protected void handleEmployeeLogin(){
-        // check if login is valid
-        this.employeeWelcomeLabel.setText("Welcome to Fast and Flavorous!\nWork hard, we're watching you...");
+        if(employeeLogin(emailInput.getText(), passwordInput.getText())) {
+            this.employeeWelcomeLabel.setText("Welcome to Fast and Flavorous "+emailInput.getText()+"!\nWork hard, we're watching you...");
+        }
     }
 
     @FXML
-    protected void handleClientLogin(){
-        // check if login is valid
-        this.clientWelcomeLabel.setText("Welcome to Fast and Flavorous!\nEnjoy your meal!");
+    protected void handleClientLogin(ActionEvent e){
+        if(e.getSource() == clientSubmit){
+            if(clientLogin(tokenField.getText())) {
+                this.clientWelcomeLabel.setText("Welcome to Fast and Flavorous!\nEnjoy your meal!");
+            }
+        }else{
+            this.clientWelcomeLabel.setText("Welcome to Fast and Flavorous!\nEnjoy your meal!");
+        }
     }
+
+    /**
+     * @param token String
+     * @return
+     */
+    public boolean clientLogin(String token) {
+        Client client = facade.checkClientLogin(token);
+        if(client!=null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * @param email String
+     * @param password String
+     * @return
+     */
+    public boolean employeeLogin(String email, String password) {
+        Employee employee = facade.checkEmployeeLogin(email, password);
+        if(employee!=null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }

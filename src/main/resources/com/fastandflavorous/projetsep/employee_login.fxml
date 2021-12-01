@@ -15,8 +15,8 @@
       </Label>
       <Label layoutX="158.0" layoutY="114.0" text="Email :" />
       <Label layoutX="135.0" layoutY="154.0" text="Password : " />
-      <PasswordField id="passwordInput" layoutX="195.0" layoutY="150.0" prefHeight="25.0" prefWidth="261.0" />
-      <TextField id="emailInput" layoutX="195.0" layoutY="110.0" prefHeight="25.0" prefWidth="261.0" />
-      <Button id="returnToSelectLogin" layoutX="512.0" layoutY="346.0" mnemonicParsing="false" onAction="#returnToLoginType" text="Cancel" />
+      <PasswordField fx:id="passwordInput" layoutX="195.0" layoutY="150.0" prefHeight="25.0" prefWidth="261.0" />
+      <TextField fx:id="emailInput" layoutX="195.0" layoutY="110.0" prefHeight="25.0" prefWidth="261.0" />
+      <Button fx:id="returnToSelectLogin" layoutX="512.0" layoutY="346.0" mnemonicParsing="false" onAction="#returnToLoginType" text="Cancel" />
    </children>
 </AnchorPane>
