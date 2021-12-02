@@ -10,6 +10,8 @@ module com.fastandflavorous.projetsep {
     requires eu.hansolo.tilesfx;
     requires mysql.connector.java;
     requires java.sql;
+    requires junit;
+    requires org.junit.jupiter.api;
 
     exports com.fastandflavorous.projetsep.dao.users;
     exports com.fastandflavorous.projetsep.model.users;
@@ -17,4 +19,5 @@ module com.fastandflavorous.projetsep {
     exports com.fastandflavorous.projetsep.facade.login;
     opens com.fastandflavorous.projetsep to javafx.fxml;
     exports com.fastandflavorous.projetsep;
+    exports com.fastandflavorous.projetsep.login.tests;
 }
