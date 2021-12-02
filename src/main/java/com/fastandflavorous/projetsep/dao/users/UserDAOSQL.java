@@ -55,7 +55,6 @@ public class UserDAOSQL extends UserDAO {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"));
-                System.out.println(""+employee.getEmail()+" "+employee.getPassword());
             }
 
         } catch(SQLException e){
