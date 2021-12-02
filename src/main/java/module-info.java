@@ -8,6 +8,8 @@ module com.fastandflavorous.projetsep {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires mysql.connector.java;
+    requires java.sql;
 
     exports com.fastandflavorous.projetsep.dao.users;
     exports com.fastandflavorous.projetsep.model.users;

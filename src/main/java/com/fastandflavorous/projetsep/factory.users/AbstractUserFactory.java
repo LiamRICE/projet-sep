@@ -45,7 +45,7 @@ public class AbstractUserFactory {
     public Employee checkEmployeeLogin(String email, String password) {
         Employee e = dao.getEmployee(email);
         if(e!=null) {
-            if (e.getPassword() == password) {
+            if (e.getPassword().equals(password)) {
                 employeeManager.addEmployee(e);
                 return e;
             } else {
