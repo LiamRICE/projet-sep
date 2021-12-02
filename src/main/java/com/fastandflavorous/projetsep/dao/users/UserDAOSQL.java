@@ -69,7 +69,7 @@ public class UserDAOSQL extends UserDAO {
      * @return
      */
     public Client getClient(String token) {
-        String query = "SELECT * FROM CLIENT WHERE token ='"+token+"';";
+        String query = "SELECT * FROM Client WHERE token ='"+token+"';";
         Client client = null;
         try{
             PreparedStatement ps=connection.prepareStatement(query);
