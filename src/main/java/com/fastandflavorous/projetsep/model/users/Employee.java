@@ -8,8 +8,17 @@ public class Employee extends User {
     /**
      * Default constructor
      */
-    public Employee() {
+    public Employee(String name, String email, String password, float salary) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.salary = salary;
     }
+
+    /**
+     *
+     */
+    private String name;
 
     /**
      * 
@@ -30,16 +39,14 @@ public class Employee extends User {
      * @return
      */
     public String getEmail() {
-        // TODO implement here
-        return "";
+        return email;
     }
 
     /**
      * @return
      */
     public String getPassword() {
-        // TODO implement here
-        return "";
+        return password;
     }
 
     /**

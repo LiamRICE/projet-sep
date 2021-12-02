@@ -8,8 +8,13 @@ public class Client extends User {
     /**
      * Default constructor
      */
-    public Client() {
+    public Client(String name, String token, int loyaltyPoints) {
+        this.name = name;
+        this.token = token;
+        this.loyaltyPoints = loyaltyPoints;
     }
+
+    private String name;
 
     /**
      * 

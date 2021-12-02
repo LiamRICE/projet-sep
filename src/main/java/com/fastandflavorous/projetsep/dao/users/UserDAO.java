@@ -18,18 +18,12 @@ public abstract class UserDAO {
      * @param String 
      * @return
      */
-    public Employee getEmployee(String email) {
-        // TODO implement here
-        return null;
-    }
+    public abstract Employee getEmployee(String email);
 
     /**
      * @param String 
      * @return
      */
-    public Client getClient(String token) {
-        // TODO implement here
-        return null;
-    }
+    public abstract Client getClient(String token);
 
 }
