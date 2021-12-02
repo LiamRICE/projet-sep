@@ -21,7 +21,7 @@ public class UserDAOSQL extends UserDAO {
 
     private static String password = "fastandflavorous";
 
-    public static Connection createConnection(){
+    public static Connection getConnection(){
         Connection connection = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -40,7 +40,7 @@ public class UserDAOSQL extends UserDAO {
      * Default constructor
      */
     public UserDAOSQL(){
-        this.connection = createConnection();
+        this.connection = getConnection();
     }
 
     /**
