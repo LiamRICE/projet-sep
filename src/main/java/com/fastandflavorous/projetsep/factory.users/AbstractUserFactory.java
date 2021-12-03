@@ -45,7 +45,7 @@ public class AbstractUserFactory {
     public Client checkClientLogin(String token) {
         Client client = dao.getClient(token);
         if(client!=null){
-            clientManager.addClient(client);
+            addClientToManager(client);
         }
         return client;
     }
@@ -61,7 +61,7 @@ public class AbstractUserFactory {
         if(e!=null) {
             String hashedEnteredPassword = getHashedPassword(password);
             if (hashedEnteredPassword.equals(e.getPassword())) {
-                employeeManager.addEmployee(e);
+                addEmployeeToManager(e);
                 return e;
             } else {
                 return null;
@@ -96,7 +96,7 @@ public class AbstractUserFactory {
      * @return
      */
     public void addEmployeeToManager(Employee employee) {
-        // TODO implement here
+        employeeManager.addEmployee(employee);
     }
 
     /**
@@ -104,7 +104,7 @@ public class AbstractUserFactory {
      * @return
      */
     public void addClientToManager(Client client) {
-        // TODO implement here
+        clientManager.addClient(client);
     }
 
 }
