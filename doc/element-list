@@ -1,0 +1,7 @@
+module:com.fastandflavorous.projetsep
+com.fastandflavorous.projetsep
+com.fastandflavorous.projetsep.dao.users
+com.fastandflavorous.projetsep.facade.login
+com.fastandflavorous.projetsep.factory.users
+com.fastandflavorous.projetsep.login.tests
+com.fastandflavorous.projetsep.model.users
