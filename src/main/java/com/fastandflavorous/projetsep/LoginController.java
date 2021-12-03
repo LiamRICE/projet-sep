@@ -85,8 +85,9 @@ public class LoginController {
     }
 
     /**
-     * @param token String
-     * @return
+     * This method logs the client in to the application according to the validity of their credential
+     * @param token the token that allows the client to log in to the application
+     * @return It returns true if the client credential is right otherwise it returns false
      */
     public boolean clientLogin(String token) {
         Client client = facade.checkClientLogin(token);
@@ -98,9 +99,10 @@ public class LoginController {
     }
 
     /**
-     * @param email String
-     * @param password String
-     * @return
+     * This method logs the employee in to the application according to the validity of their credentials
+     * @param email the email that allows the employee to log in to the application
+     * @param password the password that allows the employee to log in to the application
+     * @return It returns true if the employee credentials is right otherwise it returns false
      */
     public boolean employeeLogin(String email, String password) {
         Employee employee = facade.checkEmployeeLogin(email, password);

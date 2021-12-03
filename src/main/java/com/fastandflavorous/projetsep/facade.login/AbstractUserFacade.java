@@ -29,8 +29,8 @@ public abstract class AbstractUserFacade {
 
     /**
      * Ask the business logic to check the employee credentials
-     * @param email the email that allows the client to log in to the application
-     * @param password the password that allows the client to log in to the application
+     * @param email the email that allows the employee to log in to the application
+     * @param password the password that allows the employee to log in to the application
      * @return It returns the employee if the credentials were right otherwise it returns the null
      */
     public Employee checkEmployeeLogin(String email, String password) {

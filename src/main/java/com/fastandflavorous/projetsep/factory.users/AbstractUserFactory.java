@@ -52,8 +52,8 @@ public class AbstractUserFactory {
 
     /**
      * This method checks if the token received from the ui is corresponding to a token found by the DAO
-     * @param email the email that allows the client to log in to the application
-     * @param password the password that allows the client to log in to the application
+     * @param email the email that allows the employee to log in to the application
+     * @param password the password that allows the employee to log in to the application
      * @return It returns the employee if they are found by the DAO otherwise it returns the null
      */
     public Employee checkEmployeeLogin(String email, String password) {
