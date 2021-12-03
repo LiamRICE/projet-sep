@@ -21,6 +21,11 @@ public class UserDAOSQL extends UserDAO {
 
     private static String password = "fastandflavorous";
 
+    /**
+     * This method is used to establish the connection with the database
+     * @return it returns a Connection static object that allows us to communicate with the databse
+     */
+
     public static Connection getConnection(){
         Connection connection = null;
         try{
@@ -44,8 +49,9 @@ public class UserDAOSQL extends UserDAO {
     }
 
     /**
-     * @param String
-     * @return
+     * This method is used to retrieve an Employee from the database according to their email
+     * @param email The email that allows the employee to log in to the application
+     * @return It returns the employee if they are found in the database otherwise it returns the null
      */
     public Employee getEmployee(String email) {
         String query = "SELECT * FROM Employee WHERE email ='"+email+"';";
@@ -64,8 +70,9 @@ public class UserDAOSQL extends UserDAO {
     }
 
     /**
-     * @param String
-     * @return
+     * This method is used to retrieve a Client from the database according to their token
+     * @param token The token that allows the client to log in to the application
+     * @return It returns the client if they are found in the database otherwise it returns the null
      */
     public Client getClient(String token) {
         String query = "SELECT * FROM Client WHERE token ='"+token+"';";
