@@ -9,16 +9,10 @@ public class Client extends User {
      * Default constructor
      */
     public Client(String name, String token, int loyaltyPoints) {
-        this.name = name;
+        super(name);
         this.token = token;
         this.loyaltyPoints = loyaltyPoints;
     }
-
-    /**
-     *
-     */
-
-    private String name;
 
     /**
      * 
@@ -31,14 +25,14 @@ public class Client extends User {
     private int loyaltyPoints;
 
     /**
-     * @return
+     * @return the token of the client
      */
     public String getToken() {
         return getToken();
     }
 
     /**
-     * @return
+     * @return the loyaltyPoints of the client
      */
     public int getLoyaltyPoints() {
         return loyaltyPoints;

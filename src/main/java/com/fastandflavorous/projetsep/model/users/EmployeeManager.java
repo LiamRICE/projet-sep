@@ -35,6 +35,7 @@ public class EmployeeManager {
 
 
     /**
+     * This method add an employee to the Employee
      * @param employee
      * @return
      */
@@ -45,6 +46,7 @@ public class EmployeeManager {
     }
 
     /**
+     * This method remove an employee to the Employee
      * @param employee
      * @return
      */

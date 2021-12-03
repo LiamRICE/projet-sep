@@ -10,7 +10,8 @@ public abstract class User {
     /**
      * Default constructor
      */
-    protected User() {
+    protected User(String name) {
+        this.name = name;
     }
 
     /**
@@ -19,11 +20,10 @@ public abstract class User {
     private String name;
 
     /**
-     * @return
+     * @return the name of the user
      */
     public String getName() {
-        // TODO implement here
-        return null;
+        return name;
     }
 
 }

@@ -9,16 +9,11 @@ public class Employee extends User {
      * Default constructor
      */
     public Employee(String name, String email, String password, float salary) {
-        this.name = name;
+        super(name);
         this.email = email;
         this.password = password;
         this.salary = salary;
     }
-
-    /**
-     *
-     */
-    private String name;
 
     /**
      * 
@@ -36,21 +31,21 @@ public class Employee extends User {
     private float salary;
 
     /**
-     * @return
+     * @return the email of the Employee
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * @return
+     * @return the password of the Employee
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @return
+     * @return the salary of the Employee
      */
     public float getSalary() {
         return salary;
