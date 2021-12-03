@@ -53,8 +53,7 @@ public class Employee extends User {
      * @return
      */
     public float getSalary() {
-        // TODO implement here
-        return 0.0f;
+        return salary;
     }
 
     /**

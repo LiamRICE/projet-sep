@@ -14,6 +14,10 @@ public class Client extends User {
         this.loyaltyPoints = loyaltyPoints;
     }
 
+    /**
+     *
+     */
+
     private String name;
 
     /**
@@ -30,16 +34,14 @@ public class Client extends User {
      * @return
      */
     public String getToken() {
-        // TODO implement here
-        return "";
+        return getToken();
     }
 
     /**
      * @return
      */
     public int getLoyaltyPoints() {
-        // TODO implement here
-        return 0;
+        return loyaltyPoints;
     }
 
     /**
