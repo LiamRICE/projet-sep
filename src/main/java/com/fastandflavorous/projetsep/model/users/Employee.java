@@ -52,21 +52,18 @@ public class Employee extends User {
     }
 
     /**
-     * @return
      */
     public void setEmail(String email) {
         // TODO implement here
     }
 
     /**
-     * @return
      */
     public void setPassword(String password) {
         // TODO implement here
     }
 
     /**
-     * @return
      */
     public void setName(String name) {
         // TODO implement here

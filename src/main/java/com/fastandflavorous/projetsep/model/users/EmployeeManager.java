@@ -37,7 +37,6 @@ public class EmployeeManager {
     /**
      * This method add an employee to the Employee
      * @param employee
-     * @return
      */
     public void addEmployee(Employee employee) {
         if(employee!=null){
@@ -48,14 +47,13 @@ public class EmployeeManager {
     /**
      * This method remove an employee to the Employee
      * @param employee
-     * @return
      */
     public void removeEmployee(Employee employee) {
         employees.remove(employee);
     }
 
     /**
-     * @return
+     *
      */
     public List<Employee> getAllEmployees() {
         // TODO implement here
@@ -65,7 +63,6 @@ public class EmployeeManager {
     /**
      * @param email
      * @param password
-     * @return
      */
     public boolean login(String email, String password) {
         // TODO implement here

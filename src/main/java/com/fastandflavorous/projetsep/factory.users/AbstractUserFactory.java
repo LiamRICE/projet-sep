@@ -102,7 +102,6 @@ public abstract class AbstractUserFactory {
 
     /**
      * @param employee
-     * @return
      */
     public void addEmployeeToManager(Employee employee) {
         employeeManager.addEmployee(employee);
@@ -110,7 +109,6 @@ public abstract class AbstractUserFactory {
 
     /**
      * @param client
-     * @return
      */
     public void addClientToManager(Client client) {
         clientManager.addClient(client);

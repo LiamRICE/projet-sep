@@ -18,14 +18,12 @@ public class Director extends Employee {
     private static Director director;
 
     /**
-     * @return
      */
     public void getDirector() {
         // TODO implement here
     }
 
     /**
-     * @return
      */
     public void setDirector() {
         // TODO implement here
