@@ -2,6 +2,8 @@ package com.fastandflavorous.projetsep.dao.users;
 
 import com.fastandflavorous.projetsep.model.users.Client;
 import com.fastandflavorous.projetsep.model.users.Employee;
+import com.fastandflavorous.projetsep.model.users.User;
+
 import java.sql.*;
 
 /**
@@ -9,10 +11,26 @@ import java.sql.*;
  */
 public abstract class UserDAO {
 
+    private static UserDAO dao;
+    private static Object sync = new Object();
+
     /**
      * Default constructor
      */
-    public UserDAO() {
+    protected UserDAO() {
+    }
+
+    public static UserDAO getDAO(String daoType){
+        if(daoType == "MySQL") {
+            if (dao == null) {
+                synchronized (sync) {
+                    if (dao == null) {
+                        dao = new UserDAOSQL();
+                    }
+                }
+            }
+        }
+        return dao;
     }
 
     /**

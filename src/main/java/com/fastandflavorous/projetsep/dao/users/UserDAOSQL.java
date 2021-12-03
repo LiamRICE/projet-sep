@@ -44,7 +44,7 @@ public class UserDAOSQL extends UserDAO {
     /**
      * Default constructor
      */
-    public UserDAOSQL(){
+    protected UserDAOSQL(){
         this.connection = getConnection();
     }
 

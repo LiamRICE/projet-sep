@@ -10,7 +10,8 @@ public class UserFactory extends AbstractUserFactory {
     /**
      * Default constructor
      */
-    public UserFactory() {
+    protected UserFactory() {
+        super();
     }
 
 

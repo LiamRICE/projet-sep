@@ -15,7 +15,7 @@ public abstract class AbstractUserFacade {
      * Default constructor
      */
     public AbstractUserFacade() {
-        this.factory = new UserFactory();
+        this.factory = AbstractUserFactory.getFactory();
     }
 
     /**

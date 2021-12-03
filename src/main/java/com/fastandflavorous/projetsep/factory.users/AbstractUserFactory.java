@@ -2,10 +2,7 @@ package com.fastandflavorous.projetsep.factory.users;
 
 import com.fastandflavorous.projetsep.dao.users.UserDAO;
 import com.fastandflavorous.projetsep.dao.users.UserDAOSQL;
-import com.fastandflavorous.projetsep.model.users.Client;
-import com.fastandflavorous.projetsep.model.users.ClientManager;
-import com.fastandflavorous.projetsep.model.users.Employee;
-import com.fastandflavorous.projetsep.model.users.EmployeeManager;
+import com.fastandflavorous.projetsep.model.users.*;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -18,8 +15,9 @@ import java.util.Base64;
 /**
  * 
  */
-public class AbstractUserFactory {
+public abstract class AbstractUserFactory {
 
+    private static AbstractUserFactory factory;
     private UserDAO dao;
     private EmployeeManager employeeManager;
     private ClientManager clientManager;
@@ -31,10 +29,21 @@ public class AbstractUserFactory {
     /**
      * Default constructor
      */
-    public AbstractUserFactory() {
-        this.dao = new UserDAOSQL();
+    protected AbstractUserFactory() {
+        this.dao = UserDAO.getDAO("MySQL");
         this.employeeManager = EmployeeManager.getEmployeeManager();
         this.clientManager = ClientManager.getClientManager();
+    }
+
+    public static AbstractUserFactory getFactory(){
+        if(factory == null){
+            synchronized (SALT){
+                if(factory == null){
+                    factory = new UserFactory();
+                }
+            }
+        }
+        return factory;
     }
 
     /**
