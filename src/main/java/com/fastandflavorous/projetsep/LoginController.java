@@ -85,7 +85,7 @@ public class LoginController {
     @FXML
     protected void handleEmployeeLogin(){
         if(employeeLogin(emailInput.getText(), passwordInput.getText())) {
-            this.employeeWelcomeLabel.setText("Welcome to Fast and Flavorous "+emailInput.getText()+"!\nWork hard, we're watching you...");
+            this.employeeWelcomeLabel.setText("Welcome to Fast and Flavorous "+facade.getUserName()+"!\nWork hard, we're watching you...");
         }else{
             this.employeeWelcomeLabel.setText("DENIED!");
         }
@@ -99,7 +99,7 @@ public class LoginController {
     protected void handleClientLogin(ActionEvent e){
         if(e.getSource() == clientSubmit){
             if(clientLogin(tokenField.getText())) {
-                this.clientWelcomeLabel.setText("Welcome to Fast and Flavorous!\nEnjoy your meal!");
+                this.clientWelcomeLabel.setText("Welcome to Fast and Flavorous "+facade.getUserName()+"!\nEnjoy your meal!");
             }else{
                 this.clientWelcomeLabel.setText("Sorry, we don't recognise your token!\nTry again maybe?");
             }
@@ -114,12 +114,7 @@ public class LoginController {
      * @return It returns true if the client credential is right otherwise it returns false
      */
     public boolean clientLogin(String token) {
-        Client client = facade.checkClientLogin(token);
-        if(client!=null){
-            return true;
-        }else {
-            return false;
-        }
+        return facade.checkClientLogin(token);
     }
 
     /**
@@ -129,12 +124,7 @@ public class LoginController {
      * @return It returns true if the employee credentials is right otherwise it returns false
      */
     public boolean employeeLogin(String email, String password) {
-        Employee employee = facade.checkEmployeeLogin(email, password);
-        if(employee!=null){
-            return true;
-        }else {
-            return false;
-        }
+        return facade.checkEmployeeLogin(email, password);
     }
 
 }
