@@ -1,4 +1,4 @@
-package com.fastandflavorous.projetsep.login.tests;
+package com.fastandflavorous.projetsep.tests.login;
 
 import com.fastandflavorous.projetsep.LoginController;
 import org.junit.Test;
