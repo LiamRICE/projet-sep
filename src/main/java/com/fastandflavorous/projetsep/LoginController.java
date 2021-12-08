@@ -72,11 +72,7 @@ public class LoginController {
      */
     @FXML
     protected void returnToLoginType(ActionEvent e) throws IOException{
-        Stage stage = (Stage)((Button)e.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FastAndFuriousApplication.returnToLoginType(e);
     }
 
     /**
@@ -89,6 +85,10 @@ public class LoginController {
         }else{
             this.employeeWelcomeLabel.setText("DENIED!");
         }
+    }
+
+    public AbstractUserFacade getUserFacade(){
+        return this.facade;
     }
 
     /**
