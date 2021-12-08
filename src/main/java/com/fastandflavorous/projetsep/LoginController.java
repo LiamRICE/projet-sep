@@ -4,15 +4,10 @@ import com.fastandflavorous.projetsep.facade.login.AbstractUserFacade;
 import com.fastandflavorous.projetsep.facade.login.UserFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import com.fastandflavorous.projetsep.model.users.*;
 
 import java.io.IOException;
 
@@ -44,44 +39,34 @@ public class LoginController {
 
     /**
      * This method handles redirection from the login type page to either the employee login page or client login page
-     * @param e is the action event that is used to determine which button was pressed
      * @throws IOException if FXMLLoader can't get or load the required fxml file
      */
     @FXML
     protected void handleLoginType(ActionEvent e) throws IOException {
-        Stage stage;
-        Parent root;
         Object src = e.getSource();
-
         if(src == employeeButton) {
-            stage = (Stage)employeeButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("employee_login.fxml"));
+            FastAndFlavorousApplication.switchToEmployeeLogin();
         }else{
-            stage = (Stage)employeeButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("client_login.fxml"));
+            FastAndFlavorousApplication.switchToClientLogin();
         }
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     /**
      * This method serves to return the GUI to the login type screen
-     * @param e is the button that is pressed by the user to call this event
      * @throws IOException if FXMLLoader can't get and load the correct fxml file
      */
     @FXML
-    protected void returnToLoginType(ActionEvent e) throws IOException{
-        FastAndFuriousApplication.returnToLoginType(e);
+    protected void returnToLoginType() throws IOException{
+        FastAndFlavorousApplication.returnToLoginType();
     }
 
     /**
      * This method handles pulling the token from the input fields and submitting it for validation, and forwarding the user if their credentials are valid
      */
     @FXML
-    protected void handleEmployeeLogin(){
+    protected void handleEmployeeLogin() throws IOException {
         if(employeeLogin(emailInput.getText(), passwordInput.getText())) {
-            this.employeeWelcomeLabel.setText("Welcome to Fast and Flavorous "+facade.getUserName()+"!\nWork hard, we're watching you...");
+            FastAndFlavorousApplication.switchToDirectorMenus();
         }else{
             this.employeeWelcomeLabel.setText("DENIED!");
         }
