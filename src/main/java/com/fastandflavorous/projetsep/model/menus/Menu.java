@@ -10,7 +10,12 @@ public class Menu {
     /**
      * Default constructor
      */
-    public Menu() {
+    public Menu(String name, String image, String description, float price){
+        this.name = name;
+        this.image = image;
+        this.description = description;
+        this.price = price;
+        this.products = new ArrayList<>();
     }
 
     /**
@@ -33,6 +38,8 @@ public class Menu {
      */
     private float price;
 
+    private List<Product> products;
+
 
 
     /**
@@ -50,6 +57,15 @@ public class Menu {
     private float getDefaultPrice(float markup) {
         // TODO implement here
         return 0.0f;
+    }
+
+    public String toString(){
+        String ret = this.name+" | ";
+        for(Product product : products){
+            ret += product.toString() + ", ";
+        }
+        ret += " | "+this.price;
+        return ret;
     }
 
 }

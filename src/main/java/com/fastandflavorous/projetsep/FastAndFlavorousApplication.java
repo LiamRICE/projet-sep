@@ -61,4 +61,11 @@ public class FastAndFlavorousApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void switchToDirectorAddMenus() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_menu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

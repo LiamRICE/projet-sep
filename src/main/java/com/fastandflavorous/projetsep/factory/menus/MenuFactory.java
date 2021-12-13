@@ -11,6 +11,7 @@ public class MenuFactory extends AbstractMenuFactory {
      * Default constructor
      */
     public MenuFactory() {
+        super();
     }
 
 

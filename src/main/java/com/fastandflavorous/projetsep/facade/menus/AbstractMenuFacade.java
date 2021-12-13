@@ -1,6 +1,9 @@
 package com.fastandflavorous.projetsep.facade.menus;
 
 import java.util.*;
+
+import com.fastandflavorous.projetsep.factory.menus.AbstractMenuFactory;
+import com.fastandflavorous.projetsep.factory.users.AbstractUserFactory;
 import com.fastandflavorous.projetsep.model.menus.*;
 
 /**
@@ -8,18 +11,23 @@ import com.fastandflavorous.projetsep.model.menus.*;
  */
 public class AbstractMenuFacade {
 
+    private AbstractMenuFactory factory;
     /**
      * Default constructor
      */
-    public AbstractMenuFacade() {
+    protected AbstractMenuFacade() {
+        this.factory = AbstractMenuFactory.getFactory();
+    }
+
+    public static AbstractMenuFacade getFacade(){
+        return new MenuFacade();
     }
 
     /**
      * @return
      */
     public List<Menu> getMenus() {
-        // TODO implement here
-        return null;
+        return factory.getMenus();
     }
 
     /**
@@ -44,8 +52,8 @@ public class AbstractMenuFacade {
      * @param price
      * @return
      */
-    public void addMenu(String name, String description, float price) {
-        // TODO implement here
+    public void addMenu(String name, String image, String description, float price) {
+        factory.addMenu(name, image, description, price);
     }
 
     /**

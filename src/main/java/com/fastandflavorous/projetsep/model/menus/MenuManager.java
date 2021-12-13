@@ -1,5 +1,7 @@
 package com.fastandflavorous.projetsep.model.menus;
 
+import com.fastandflavorous.projetsep.factory.menus.MenuFactory;
+
 import java.util.*;
 
 /**
@@ -10,19 +12,31 @@ public class MenuManager {
     /**
      * Default constructor
      */
-    public MenuManager() {
+    private MenuManager() {
+        this.menus = new ArrayList<>();
     }
 
     /**
      * 
      */
     private static MenuManager menuManager;
+    private static Object sync = new Object();
 
     /**
      * 
      */
-    private Menu menu;
+    private List<Menu> menus;
 
+    public static MenuManager getMenuManager() {
+        if(menuManager == null){
+            synchronized (sync){
+                if(menuManager == null){
+                    menuManager = new MenuManager();
+                }
+            }
+        }
+        return menuManager;
+    }
 
 
     /**
@@ -30,7 +44,7 @@ public class MenuManager {
      * @return
      */
     public void addMenu(Menu menu) {
-        // TODO implement here
+        menus.add(menu);
     }
 
     /**
@@ -38,7 +52,7 @@ public class MenuManager {
      * @return
      */
     public void removeMenu(Menu menu) {
-        // TODO implement here
+        menus.remove(menu);
     }
 
     /**
@@ -79,6 +93,10 @@ public class MenuManager {
      */
     public void removeAllergen(Allergen allergen) {
         // TODO implement here
+    }
+
+    public List<Menu> getMenus(){
+        return this.menus;
     }
 
 }

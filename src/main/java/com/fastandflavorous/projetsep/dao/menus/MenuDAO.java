@@ -1,6 +1,8 @@
 package com.fastandflavorous.projetsep.dao.menus;
 
 import java.util.*;
+
+import com.fastandflavorous.projetsep.factory.users.UserFactory;
 import com.fastandflavorous.projetsep.model.menus.*;
 
 /**
@@ -18,6 +20,18 @@ public class MenuDAO {
      * 
      */
     private static MenuDAO menuDAO;
+    private static Object sync = new Object();
+
+    public static MenuDAO getMenuDAO() {
+        if(menuDAO == null){
+            synchronized (sync){
+                if(menuDAO == null){
+                    menuDAO = new MenuDAOSQL();
+                }
+            }
+        }
+        return menuDAO;
+    }
 
     /**
      * @return
@@ -32,6 +46,7 @@ public class MenuDAO {
      * @return
      */
     public void addMenu(Menu menu) {
+        System.out.println("Adding a new menu : "+menu.toString());
         // TODO implement here
     }
 

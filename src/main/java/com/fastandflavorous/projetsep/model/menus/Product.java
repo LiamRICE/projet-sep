@@ -10,7 +10,10 @@ public class Product {
     /**
      * Default constructor
      */
-    public Product() {
+    public Product(String name, float cost) {
+        this.name = name;
+        this.cost = cost;
+        this.allergens = new ArrayList<>();
     }
 
     /**
@@ -23,5 +26,18 @@ public class Product {
      */
     private float cost;
 
+    private List<Allergen> allergens;
 
+    public List<Allergen> getAllergens() {
+        return allergens;
+    }
+
+    public void addAllergen(Allergen a){
+        this.allergens.add(a);
+    }
+
+    public String toString(){
+        String ret = this.name;
+        return ret;
+    }
 }

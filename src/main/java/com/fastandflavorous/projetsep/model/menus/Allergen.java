@@ -10,7 +10,8 @@ public class Allergen {
     /**
      * Default constructor
      */
-    public Allergen() {
+    public Allergen(String name) {
+        this.name = name;
     }
 
     /**

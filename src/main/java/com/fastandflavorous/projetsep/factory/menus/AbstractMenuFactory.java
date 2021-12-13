@@ -1,6 +1,9 @@
 package com.fastandflavorous.projetsep.factory.menus;
 
 import java.util.*;
+
+import com.fastandflavorous.projetsep.dao.menus.MenuDAO;
+import com.fastandflavorous.projetsep.factory.users.UserFactory;
 import com.fastandflavorous.projetsep.model.menus.*;
 
 /**
@@ -11,20 +14,36 @@ public class AbstractMenuFactory {
     /**
      * Default constructor
      */
-    public AbstractMenuFactory() {
+    protected AbstractMenuFactory() {
+        this.menuDAO = MenuDAO.getMenuDAO();
+        this.menuManager = MenuManager.getMenuManager();
     }
 
     /**
      * 
      */
-    private static AbstractMenuFactory menuFactory;
+    private static AbstractMenuFactory factory;
+    private MenuManager menuManager;
+    private MenuDAO menuDAO;
+    private static Object sync = new Object();
+
+    public static AbstractMenuFactory getFactory() {
+        if(factory == null){
+            synchronized (sync){
+                if(factory == null){
+                    factory = new MenuFactory();
+                }
+            }
+        }
+        return factory;
+    }
 
     /**
      * @return
      */
     public List<Menu> getMenus() {
-        // TODO implement here
-        return null;
+        // get list of menus from DAO and write them to the menuManager
+        return menuManager.getMenus();
     }
 
     /**
@@ -49,7 +68,10 @@ public class AbstractMenuFactory {
      * @param price
      * @return
      */
-    public void addMenu(String name, String description, float price) {
+    public void addMenu(String name, String image, String description, float price) {
+        Menu menu = new Menu(name, image, description, price);
+        menuDAO.addMenu(menu);
+        menuManager.addMenu(menu);
         // TODO implement here
     }
 
