@@ -7,25 +7,25 @@ import com.fastandflavorous.projetsep.model.menus.*;
 /**
  * 
  */
-public class MenuDAO {
+public abstract class AbstractMenuDAO {
 
     /**
      * Default constructor
      */
-    public MenuDAO() {
+    public AbstractMenuDAO() {
     }
 
     /**
      * 
      */
-    private static MenuDAO menuDAO;
+    private static AbstractMenuDAO menuDAO;
     private static Object sync = new Object();
 
-    public static MenuDAO getMenuDAO() {
+    public static AbstractMenuDAO getMenuDAO() {
         if(menuDAO == null){
             synchronized (sync){
                 if(menuDAO == null){
-                    menuDAO = new MenuDAOSQL();
+                    menuDAO = new MySQLMenuDAO();
                 }
             }
         }

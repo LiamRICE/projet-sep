@@ -1,16 +1,14 @@
 package com.fastandflavorous.projetsep.dao.menus;
 
-import java.util.*;
-
 /**
  * 
  */
-public class MenuDAOSQL extends MenuDAO {
+public class MySQLMenuDAO extends AbstractMenuDAO {
 
     /**
      * Default constructor
      */
-    public MenuDAOSQL() {
+    public MySQLMenuDAO() {
     }
 
 }

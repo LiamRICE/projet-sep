@@ -9,7 +9,7 @@ import java.sql.*;
 /**
  * 
  */
-public class UserDAOSQL extends UserDAO {
+public class MySQLUserDAO extends AbstractUserDAO {
 
     private static Connection connection ;
 
@@ -44,7 +44,7 @@ public class UserDAOSQL extends UserDAO {
     /**
      * Default constructor
      */
-    protected UserDAOSQL(){
+    public MySQLUserDAO(){
         this.connection = getConnection();
     }
 

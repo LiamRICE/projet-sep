@@ -1,7 +1,7 @@
 package com.fastandflavorous.projetsep.factory;
 
-import com.fastandflavorous.projetsep.dao.menus.MenuDAO;
-import com.fastandflavorous.projetsep.dao.users.UserDAO;
+import com.fastandflavorous.projetsep.dao.menus.AbstractMenuDAO;
+import com.fastandflavorous.projetsep.dao.users.AbstractUserDAO;
 import com.fastandflavorous.projetsep.model.menus.MenuManager;
 import com.fastandflavorous.projetsep.model.users.ClientManager;
 import com.fastandflavorous.projetsep.model.users.EmployeeManager;
@@ -15,9 +15,9 @@ import java.util.Base64;
 
 public abstract class AbstractFactory {
     protected AbstractFactory() {
-        this.menuDAO = MenuDAO.getMenuDAO();
+        this.menuDAO = AbstractMenuDAO.getMenuDAO();
         this.menuManager = MenuManager.getMenuManager();
-        this.dao = UserDAO.getDAO(configDAO);
+        this.dao = AbstractUserDAO.getDAO(configDAO);
         this.employeeManager = EmployeeManager.getEmployeeManager();
         this.clientManager = ClientManager.getClientManager();
     }
@@ -31,8 +31,8 @@ public abstract class AbstractFactory {
 
     // objects to be created
     private MenuManager menuManager;
-    private MenuDAO menuDAO;
-    private UserDAO dao;
+    private AbstractMenuDAO menuDAO;
+    private AbstractUserDAO dao;
     private EmployeeManager employeeManager;
     private ClientManager clientManager;
 
@@ -40,23 +40,21 @@ public abstract class AbstractFactory {
         if(factory == null){
             synchronized (sync){
                 if(factory == null){
-                    factory = new Factory();
+                    factory = new MySqlFactory();
                 }
             }
         }
         return factory;
     }
 
-    public MenuDAO getMenuDAO(){
+    public abstract AbstractUserDAO getUserDAO();
+
+    public AbstractMenuDAO getMenuDAO(){
         return this.menuDAO;
     }
 
     public MenuManager getMenuManager(){
         return this.menuManager;
-    }
-
-    public UserDAO getUserDAO(){
-        return this.dao;
     }
 
     public ClientManager getClientManager(){
