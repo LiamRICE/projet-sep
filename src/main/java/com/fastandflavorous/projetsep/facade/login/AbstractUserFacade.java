@@ -1,7 +1,6 @@
 package com.fastandflavorous.projetsep.facade.login;
 
-import com.fastandflavorous.projetsep.factory.users.AbstractUserFactory;
-import com.fastandflavorous.projetsep.factory.users.UserFactory;
+import com.fastandflavorous.projetsep.factory.AbstractFactory;
 import com.fastandflavorous.projetsep.model.users.*;
 
 /**
@@ -9,14 +8,14 @@ import com.fastandflavorous.projetsep.model.users.*;
  */
 public abstract class AbstractUserFacade {
 
-    private AbstractUserFactory factory;
+    private AbstractFactory factory;
     private User user;
 
     /**
      * Default constructor
      */
     public AbstractUserFacade() {
-        this.factory = AbstractUserFactory.getFactory();
+        this.factory = AbstractFactory.getFactory();
     }
 
     /**
@@ -25,7 +24,11 @@ public abstract class AbstractUserFacade {
      * @return It returns the client if the credential is right otherwise it returns the null
      */
     public boolean checkClientLogin(String token) {
-        this.user = factory.checkClientLogin(token);
+        Client client = factory.getUserDAO().getClient(token);
+        this.user = client;
+        if(this.user!=null){
+            factory.getClientManager().addClient((Client) this.user);
+        }
         if(this.user == null){
             return false;
         }else{
@@ -48,11 +51,18 @@ public abstract class AbstractUserFacade {
      * @return It returns the employee if the credentials were right otherwise it returns the null
      */
     public boolean checkEmployeeLogin(String email, String password) {
-        this.user = factory.checkEmployeeLogin(email, password);
-        if(this.user == null){
-            return false;
+        Employee e = factory.getUserDAO().getEmployee(email);
+        this.user = e;
+        if(e!=null) {
+            String hashedEnteredPassword = factory.getHashedPassword(password);
+            if (hashedEnteredPassword.equals(e.getPassword())) {
+                factory.getEmployeeManager().addEmployee(e);
+                return true;
+            }else{
+                return false;
+            }
         }else{
-            return true;
+            return false;
         }
     }
 

@@ -9,12 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.util.*;
@@ -27,15 +25,13 @@ public class MenuController {
     @FXML
     AnchorPane listPane;
     @FXML
-    ListView menuList;
+    ListView mainList;
     @FXML
     TextField name_input, image_input, price_input;
     @FXML
     TextArea description_input;
-    @FXML
-    SplitMenuButton product_list;
 
-    private AbstractMenuFacade facade;
+    private static AbstractMenuFacade facade;
 
     /**
      * Default constructor
@@ -49,7 +45,7 @@ public class MenuController {
         HBox hbox = new HBox();
         Label label = new Label("(empty)");
         Pane pane = new Pane();
-        Button button = new Button("(>)");
+        Button button = new Button("DEL");
         Menu menuItem;
 
         public MenuCell() {
@@ -79,20 +75,42 @@ public class MenuController {
         }
     }
 
+    static class ProductCell extends ListCell<Product> {
+        HBox hbox = new HBox();
+        Label label = new Label("(empty)");
+        Pane pane = new Pane();
+        Button button = new Button("DEL");
+        Product productItem;
+
+        public ProductCell() {
+            super();
+            hbox.getChildren().addAll(label, pane, button);
+            HBox.setHgrow(pane, Priority.ALWAYS);
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    MenuController.deleteProduct(productItem);
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Product item, boolean empty) {
+            super.updateItem(item, empty);
+            setText(null);  // No text in label of super class
+            if (empty) {
+                productItem = null;
+                setGraphic(null);
+            } else {
+                productItem = item;
+                label.setText(item!=null ? item.toString() : "<null>");
+                setGraphic(hbox);
+            }
+        }
+    }
+
     public void showMenuInputPane() throws IOException {
         FastAndFlavorousApplication.switchToDirectorAddMenus();
-        /*
-        ObservableList<MenuItem> menuItems = FXCollections.observableArrayList();
-        for(Product p : getProducts()){
-            menuItems.add(new MenuItem(p.toString()));
-        }
-        product_list.getItems().addAll();
-        product_list.setOnAction(new EventHandler() {
-            public void handle(ActionEvent e) {
-                System.out.println("Shutdown");
-            }
-        });
-        */
     }
 
     public void returnToDirectorMenus() throws IOException {
@@ -104,11 +122,26 @@ public class MenuController {
         ObservableList<Menu> list = FXCollections.observableArrayList();
         // TODO - pull list of menu and store them in our observableList.
         list.addAll(getMenus());
-        menuList.setItems(list);
-        menuList.setCellFactory(new Callback<ListView<Menu>, ListCell<Menu>>() {
+        mainList.setItems(list);
+        mainList.setCellFactory(new Callback<ListView<Menu>, ListCell<Menu>>() {
             @Override
             public ListCell<Menu> call(ListView<Menu> param) {
                 return new MenuCell();
+            }
+        });
+        stage.show();
+    }
+
+    public void getAllProducts(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Product> list = FXCollections.observableArrayList();
+        // TODO - pull list of menu and store them in our observableList.
+        list.addAll(getProducts());
+        mainList.setItems(list);
+        mainList.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
+            @Override
+            public ListCell<Product> call(ListView<Product> param) {
+                return new ProductCell();
             }
         });
         stage.show();
@@ -211,23 +244,22 @@ public class MenuController {
      * @return
      */
     public static void deleteMenu(Menu menu) {
-        System.out.println("Deleting Menu : "+menu.toString());
+        facade.deleteMenu(menu);
+    }
+
+    /**
+     * @param product
+     * @return
+     */
+    public static void deleteProduct(Product product) {
         // TODO implement here
     }
 
     /**
-     * @param e
+     * @param allergen
      * @return
      */
-    public void deleteProduct(ActionEvent e) {
-        // TODO implement here
-    }
-
-    /**
-     * @param e
-     * @return
-     */
-    public void deleteAllergen(ActionEvent e) {
+    public void deleteAllergen(Allergen allergen) {
         // TODO implement here
     }
 

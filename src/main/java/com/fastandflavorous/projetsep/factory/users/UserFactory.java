@@ -1,7 +1,5 @@
 package com.fastandflavorous.projetsep.factory.users;
 
-import java.util.*;
-
 /**
  * 
  */

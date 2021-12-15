@@ -30,6 +30,10 @@ public class FastAndFlavorousApplication extends Application {
         return loginController;
     }
 
+    public static void update(){
+        stage.show();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

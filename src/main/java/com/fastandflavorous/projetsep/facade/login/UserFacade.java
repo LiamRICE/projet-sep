@@ -1,7 +1,5 @@
 package com.fastandflavorous.projetsep.facade.login;
 
-import java.util.*;
-
 /**
  * 
  */

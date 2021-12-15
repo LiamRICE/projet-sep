@@ -2,7 +2,6 @@ package com.fastandflavorous.projetsep.dao.menus;
 
 import java.util.*;
 
-import com.fastandflavorous.projetsep.factory.users.UserFactory;
 import com.fastandflavorous.projetsep.model.menus.*;
 
 /**
@@ -63,6 +62,7 @@ public class MenuDAO {
      * @return
      */
     public void deleteMenu(Menu menu) {
+        System.out.println("Deleting menu : "+menu.toString());
         // TODO implement here
     }
 

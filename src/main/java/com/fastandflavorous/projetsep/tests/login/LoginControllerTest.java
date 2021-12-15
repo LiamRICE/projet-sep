@@ -24,7 +24,7 @@ public class LoginControllerTest {
     @Test
     @DisplayName("Checking if employee 'fast@fast.com' with password 'fast' is recognised :")
     public void employeeLoginTestTrue() {
-        assertEquals(true, lc.employeeLogin("fast@fast.com", "fast"));
+        assertEquals(true, lc.employeeLogin("dir@fast.com", "dir"));
     }
     @Test
     @DisplayName("Checking if employee 'hacker@hacking.com' with password 'fast' is rejected :")
@@ -34,6 +34,6 @@ public class LoginControllerTest {
     @Test
     @DisplayName("Checking if employee 'fast@fast.com' with password 'wrong' is rejected :")
     public void employeeLoginTestWrongPswd() {
-        assertEquals(false, lc.employeeLogin("fast@fast.com", "wrong"));
+        assertEquals(false, lc.employeeLogin("dir@fast.com", "wrong"));
     }
 }

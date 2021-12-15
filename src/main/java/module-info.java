@@ -31,4 +31,8 @@ module com.fastandflavorous.projetsep {
     exports com.fastandflavorous.projetsep.model.menus;
     exports com.fastandflavorous.projetsep.factory.menus;
     exports com.fastandflavorous.projetsep.facade.menus;
+    exports com.fastandflavorous.projetsep.factory;
+    exports com.fastandflavorous.projetsep.factory.users;
+    exports com.fastandflavorous.projetsep.facade.menus;
+    exports com.fastandflavorous.projetsep.facade.login;
 }

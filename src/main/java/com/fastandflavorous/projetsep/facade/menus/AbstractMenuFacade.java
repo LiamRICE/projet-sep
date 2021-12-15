@@ -2,8 +2,7 @@ package com.fastandflavorous.projetsep.facade.menus;
 
 import java.util.*;
 
-import com.fastandflavorous.projetsep.factory.menus.AbstractMenuFactory;
-import com.fastandflavorous.projetsep.factory.users.AbstractUserFactory;
+import com.fastandflavorous.projetsep.factory.AbstractFactory;
 import com.fastandflavorous.projetsep.model.menus.*;
 
 /**
@@ -11,12 +10,12 @@ import com.fastandflavorous.projetsep.model.menus.*;
  */
 public class AbstractMenuFacade {
 
-    private AbstractMenuFactory factory;
+    private AbstractFactory factory;
     /**
      * Default constructor
      */
     protected AbstractMenuFacade() {
-        this.factory = AbstractMenuFactory.getFactory();
+        this.factory = AbstractFactory.getFactory();
     }
 
     public static AbstractMenuFacade getFacade(){
@@ -27,7 +26,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Menu> getMenus() {
-        return factory.getMenus();
+        return factory.getMenuManager().getMenus();
     }
 
     /**
@@ -53,7 +52,9 @@ public class AbstractMenuFacade {
      * @return
      */
     public void addMenu(String name, String image, String description, float price) {
-        factory.addMenu(name, image, description, price);
+        Menu menu = new Menu(name, image, description, price);
+        factory.getMenuManager().addMenu(menu);
+        factory.getMenuDAO().addMenu(menu);
     }
 
     /**
@@ -144,7 +145,8 @@ public class AbstractMenuFacade {
      * @return
      */
     public void deleteMenu(Menu menu) {
-        // TODO implement here
+        factory.getMenuManager().removeMenu(menu);
+        factory.getMenuDAO().deleteMenu(menu);
     }
 
     /**
