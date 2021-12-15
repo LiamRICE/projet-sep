@@ -2,8 +2,6 @@ package com.fastandflavorous.projetsep.factory;
 
 import com.fastandflavorous.projetsep.dao.menus.MenuDAO;
 import com.fastandflavorous.projetsep.dao.users.UserDAO;
-import com.fastandflavorous.projetsep.factory.menus.AbstractMenuFactory;
-import com.fastandflavorous.projetsep.factory.menus.MenuFactory;
 import com.fastandflavorous.projetsep.model.menus.MenuManager;
 import com.fastandflavorous.projetsep.model.users.ClientManager;
 import com.fastandflavorous.projetsep.model.users.EmployeeManager;

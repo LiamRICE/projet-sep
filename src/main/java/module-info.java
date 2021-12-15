@@ -23,16 +23,11 @@ module com.fastandflavorous.projetsep {
     // exports for login and users
     exports com.fastandflavorous.projetsep.dao.users;
     exports com.fastandflavorous.projetsep.model.users;
-    exports com.fastandflavorous.projetsep.factory.users;
     exports com.fastandflavorous.projetsep.facade.login;
 
     // exports for menus
     exports com.fastandflavorous.projetsep.dao.menus;
     exports com.fastandflavorous.projetsep.model.menus;
-    exports com.fastandflavorous.projetsep.factory.menus;
     exports com.fastandflavorous.projetsep.facade.menus;
     exports com.fastandflavorous.projetsep.factory;
-    exports com.fastandflavorous.projetsep.factory.users;
-    exports com.fastandflavorous.projetsep.facade.menus;
-    exports com.fastandflavorous.projetsep.facade.login;
 }

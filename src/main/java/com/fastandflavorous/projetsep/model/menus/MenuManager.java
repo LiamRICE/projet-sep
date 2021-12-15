@@ -1,6 +1,5 @@
 package com.fastandflavorous.projetsep.model.menus;
 
-import com.fastandflavorous.projetsep.factory.menus.MenuFactory;
 
 import java.util.*;
 
