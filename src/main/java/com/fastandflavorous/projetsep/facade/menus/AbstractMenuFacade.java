@@ -33,8 +33,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Product> getProducts() {
-        // TODO implement here
-        return null;
+        return factory.getMenuManager().getProducts();
     }
 
     /**
@@ -63,7 +62,9 @@ public class AbstractMenuFacade {
      * @return
      */
     public void addProduct(String name, float cost) {
-        // TODO implement here
+        Product product = new Product(name, cost);
+        factory.getMenuManager().addProduct(product);
+        factory.getMenuDAO().addProduct(product);
     }
 
     /**
@@ -154,7 +155,8 @@ public class AbstractMenuFacade {
      * @return
      */
     public void deleteProduct(Product product) {
-        // TODO implement here
+        factory.getMenuManager().removeProduct(product);
+        factory.getMenuDAO().deleteProduct(product);
     }
 
     /**

@@ -23,10 +23,11 @@
           <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <ListView fx:id="mainList" editable="false" layoutX="14.0" layoutY="48.0" prefHeight="261.0" prefWidth="571.0" />
-                  <Button fx:id="refreshMenus" layoutX="529.0" layoutY="309.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Menus" />
-                   <Button fx:id="refreshProducs" layoutX="479.0" layoutY="309.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Products" />
-                   <Button fx:id="refreshAllergens" layoutX="429.0" layoutY="309.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Allergens" />
-                  <Button fx:id="add_menu" layoutX="372.0" layoutY="14.0" mnemonicParsing="false" onAction="#showMenuInputPane" text="Add Menu" />
+                  <Button fx:id="refreshMenus" layoutX="500.0" layoutY="309.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Menus" />
+                   <Button fx:id="refreshProducs" layoutX="400.0" layoutY="309.0" mnemonicParsing="false" onAction="#getAllProducts" text="Get Products" />
+                   <Button fx:id="refreshAllergens" layoutX="300.0" layoutY="309.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Allergens" />
+                  <Button fx:id="add_menu" layoutX="222.0" layoutY="14.0" mnemonicParsing="false" onAction="#showMenuInputPane" text="Add Menu" />
+                   <Button fx:id="add_product" layoutX="322.0" layoutY="14.0" mnemonicParsing="false" onAction="#showProductInputPane" text="Add Product" />
                </children>
             </AnchorPane>
         </items>

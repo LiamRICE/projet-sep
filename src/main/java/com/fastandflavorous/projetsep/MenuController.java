@@ -27,7 +27,7 @@ public class MenuController {
     @FXML
     ListView mainList;
     @FXML
-    TextField name_input, image_input, price_input;
+    TextField name_input, image_input, price_input, p_cost_input, p_name_input;
     @FXML
     TextArea description_input;
 
@@ -113,6 +113,10 @@ public class MenuController {
         FastAndFlavorousApplication.switchToDirectorAddMenus();
     }
 
+    public void showProductInputPane() throws IOException {
+        FastAndFlavorousApplication.switchToDirectorAddProducts();
+    }
+
     public void returnToDirectorMenus() throws IOException {
         FastAndFlavorousApplication.switchToDirectorMenus();
     }
@@ -168,7 +172,15 @@ public class MenuController {
      * @return
      */
     public void addProduct() {
-        // TODO implement here
+        String name = p_name_input.getText() == null? "": p_name_input.getText();
+        String p = p_cost_input.getText() == null? "": p_cost_input.getText();
+        float cost = Float.parseFloat(p);
+        this.facade.addProduct(name, cost);
+        try{
+            this.returnToDirectorMenus();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -227,8 +239,7 @@ public class MenuController {
      * @return
      */
     public List<Product> getProducts() {
-        // TODO implement here
-        return null;
+        return facade.getProducts();
     }
 
     /**
@@ -252,7 +263,7 @@ public class MenuController {
      * @return
      */
     public static void deleteProduct(Product product) {
-        // TODO implement here
+        facade.deleteProduct(product);
     }
 
     /**

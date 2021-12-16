@@ -13,6 +13,7 @@ public class MenuManager {
      */
     private MenuManager() {
         this.menus = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     /**
@@ -25,6 +26,7 @@ public class MenuManager {
      * 
      */
     private List<Menu> menus;
+    private List<Product> products;
 
     public static MenuManager getMenuManager() {
         if(menuManager == null){
@@ -67,7 +69,7 @@ public class MenuManager {
      * @return
      */
     public void addProduct(Product product) {
-        // TODO implement here
+        this.products.add(product);
     }
 
     /**
@@ -75,7 +77,7 @@ public class MenuManager {
      * @return
      */
     public void removeProduct(Product product) {
-        // TODO implement here
+        this.products.remove(product);
     }
 
     /**
@@ -96,6 +98,10 @@ public class MenuManager {
 
     public List<Menu> getMenus(){
         return this.menus;
+    }
+
+    public List<Product> getProducts(){
+        return this.products;
     }
 
 }
