@@ -19,4 +19,8 @@ public class Allergen {
      */
     private String name;
 
+    public String toString(){
+        return this.name;
+    }
+
 }

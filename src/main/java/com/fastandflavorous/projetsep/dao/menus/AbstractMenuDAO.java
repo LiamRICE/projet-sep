@@ -110,7 +110,7 @@ public abstract class AbstractMenuDAO {
      * @param allergen
      * @return
      */
-    public void addAllergens(Allergen allergen) {
+    public void addAllergen(Allergen allergen) {
         // TODO implement here
     }
 
@@ -120,6 +120,7 @@ public abstract class AbstractMenuDAO {
      */
     public void editAllergen(Allergen allergen) {
         // TODO implement here
+        // remove all links to this product from menus
     }
 
     /**
@@ -128,6 +129,7 @@ public abstract class AbstractMenuDAO {
      */
     public void deleteAllergen(Allergen allergen) {
         // TODO implement here
+        // remove all links to this allergen from products
     }
 
 }

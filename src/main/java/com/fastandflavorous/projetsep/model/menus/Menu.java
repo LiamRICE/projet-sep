@@ -46,8 +46,23 @@ public class Menu {
      * @return
      */
     public List<Allergen> getAllergens() {
-        // TODO implement here
-        return null;
+        ArrayList<Allergen> ret = new ArrayList<>();
+        for(Product p : products){
+            ret.add((Allergen) p.getAllergens());
+        }
+        return ret;
+    }
+
+    public List<Product> getProducts(){
+        return this.products;
+    }
+
+    public void removeProduct(Product product){
+        this.products.remove(product);
+    }
+
+    public void addProduct(Product product){
+        this.products.add(product);
     }
 
     /**

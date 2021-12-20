@@ -14,6 +14,7 @@ public class MenuManager {
     private MenuManager() {
         this.menus = new ArrayList<>();
         this.products = new ArrayList<>();
+        this.allergens = new ArrayList<>();
     }
 
     /**
@@ -27,6 +28,7 @@ public class MenuManager {
      */
     private List<Menu> menus;
     private List<Product> products;
+    private List<Allergen> allergens;
 
     public static MenuManager getMenuManager() {
         if(menuManager == null){
@@ -77,6 +79,11 @@ public class MenuManager {
      * @return
      */
     public void removeProduct(Product product) {
+        for(Menu m : menus){
+            if(m.getProducts().contains(product)){
+                m.removeProduct(product);
+            }
+        }
         this.products.remove(product);
     }
 
@@ -85,7 +92,7 @@ public class MenuManager {
      * @return
      */
     public void addAllergen(Allergen allergen) {
-        // TODO implement here
+        this.allergens.add(allergen);
     }
 
     /**
@@ -93,7 +100,12 @@ public class MenuManager {
      * @return
      */
     public void removeAllergen(Allergen allergen) {
-        // TODO implement here
+        for(Product p : products){
+            if(p.getAllergens().contains(allergen)){
+                p.removeAllergen(allergen);
+            }
+        }
+        this.allergens.remove(allergen);
     }
 
     public List<Menu> getMenus(){
@@ -102,6 +114,10 @@ public class MenuManager {
 
     public List<Product> getProducts(){
         return this.products;
+    }
+
+    public List<Allergen> getAllergens(){
+        return this.allergens;
     }
 
 }

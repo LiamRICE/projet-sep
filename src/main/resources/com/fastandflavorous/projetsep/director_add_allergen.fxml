@@ -20,18 +20,12 @@
                         </Label>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Button fx:id="cancel" layoutX="478.0" layoutY="309.0" mnemonicParsing="false" onAction="#returnToDirectorMenus" text="Cancel" />
-                        <Button fx:id="confirm" layoutX="539.0" layoutY="309.0" mnemonicParsing="false" onAction="#addMenu" text="Done" />
-                        <TextField fx:id="name_input" layoutX="127.0" layoutY="24.0" />
-                        <TextField fx:id="image_input" layoutX="150.0" layoutY="66.0" />
-                        <TextField fx:id="price_input" layoutX="127.0" layoutY="107.0" />
-                        <Label layoutX="28.0" layoutY="28.0" text="Menu Name :" />
-                        <Label layoutX="28.0" layoutY="70.0" text="Menu Image Link :" />
-                        <Label layoutX="342.0" layoutY="28.0" text="Menu Description :" />
-                        <Label layoutX="28.0" layoutY="111.0" text="Menu Price :" />
-                        <TextArea fx:id="description_input" layoutX="343.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="cancel" layoutX="529.0" layoutY="309.0" mnemonicParsing="false" onAction="#returnToDirectorMenus" text="Cancel" />
+                        <Button fx:id="confirm" layoutX="435.0" layoutY="309.0" mnemonicParsing="false" onAction="#addAllergen" text="Add Allergen" />
+                        <TextField fx:id="a_name_input" layoutX="127.0" layoutY="24.0" />
+                        <Label layoutX="28.0" layoutY="28.0" text="Allergen Name :" />
                     </children>
                 </AnchorPane>
             </items>

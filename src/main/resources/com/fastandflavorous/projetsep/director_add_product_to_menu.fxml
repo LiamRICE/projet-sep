@@ -13,7 +13,7 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Label layoutX="14.0" layoutY="6.0" prefHeight="35.0" prefWidth="571.0" text="DIRECTOR / MENUS / ADD PRODUCT TO MENU">
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="35.0" prefWidth="571.0" text="DIRECTOR / MENUS / ADD PRODUCTS TO MENU">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -22,9 +22,10 @@
                 </AnchorPane>
                 <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <ListView fx:id="mainList" editable="false" layoutX="14.0" layoutY="10.0" prefHeight="322.0" prefWidth="502.0" />
-                        <Button fx:id="refreshButton" layoutX="528.0" layoutY="271.0" mnemonicParsing="false" onAction="#getAllMenus" text="Refresh" />
-                        <Button fx:id="refreshButton1" layoutX="528.0" layoutY="307.0" mnemonicParsing="false" onAction="#getAllMenus" prefHeight="25.0" prefWidth="56.0" text="Done" />
+                        <ListView fx:id="products_available_to_add" editable="false" layoutX="14.0" layoutY="10.0" prefHeight="322.0" prefWidth="218.0" />
+                        <Button fx:id="refresh_product_lists" layoutX="239.0" layoutY="307.0" mnemonicParsing="false" onAction="#refreshAddProductToMenuLists" text="Refresh" />
+                        <Button fx:id="add_products_to_menu_done" layoutX="528.0" layoutY="307.0" mnemonicParsing="false" onAction="#showMenuInputPane" prefHeight="25.0" prefWidth="56.0" text="Next" />
+                  <ListView fx:id="products_added" editable="false" layoutX="305.0" layoutY="10.0" prefHeight="322.0" prefWidth="211.0" />
                     </children>
                 </AnchorPane>
             </items>

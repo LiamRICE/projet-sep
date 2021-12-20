@@ -32,6 +32,10 @@ public class Product {
         return allergens;
     }
 
+    public void removeAllergen(Allergen allergen){
+        this.allergens.remove(allergen);
+    }
+
     public void addAllergen(Allergen a){
         this.allergens.add(a);
     }

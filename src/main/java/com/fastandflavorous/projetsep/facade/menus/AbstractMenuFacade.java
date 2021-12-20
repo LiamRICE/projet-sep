@@ -40,8 +40,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Allergen> getAllergens() {
-        // TODO implement here
-        return null;
+        return factory.getMenuManager().getAllergens();
     }
 
     /**
@@ -50,10 +49,11 @@ public class AbstractMenuFacade {
      * @param price
      * @return
      */
-    public void addMenu(String name, String image, String description, float price) {
+    public Menu addMenu(String name, String image, String description, float price) {
         Menu menu = new Menu(name, image, description, price);
         factory.getMenuManager().addMenu(menu);
         factory.getMenuDAO().addMenu(menu);
+        return menu;
     }
 
     /**
@@ -61,10 +61,11 @@ public class AbstractMenuFacade {
      * @param cost
      * @return
      */
-    public void addProduct(String name, float cost) {
+    public Product addProduct(String name, float cost) {
         Product product = new Product(name, cost);
         factory.getMenuManager().addProduct(product);
         factory.getMenuDAO().addProduct(product);
+        return product;
     }
 
     /**
@@ -72,7 +73,9 @@ public class AbstractMenuFacade {
      * @return
      */
     public void addAllergen(String name) {
-        // TODO implement here
+        Allergen allergen = new Allergen(name);
+        factory.getMenuManager().addAllergen(allergen);
+        factory.getMenuDAO().addAllergen(allergen);
     }
 
     /**
@@ -129,7 +132,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void addProductToMenu(Menu menu, Product product) {
-        // TODO implement here
+        menu.addProduct(product);
     }
 
     /**
@@ -138,7 +141,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void addAllergenToProduct(Product product, Allergen allergen) {
-        // TODO implement here
+        product.addAllergen(allergen);
     }
 
     /**
@@ -164,7 +167,8 @@ public class AbstractMenuFacade {
      * @return
      */
     public void deleteAllergen(Allergen allergen) {
-        // TODO implement here
+        factory.getMenuManager().removeAllergen(allergen);
+        factory.getMenuDAO().deleteAllergen(allergen);
     }
 
 }

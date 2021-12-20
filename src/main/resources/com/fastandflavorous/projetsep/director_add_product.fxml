@@ -22,8 +22,8 @@
                 </AnchorPane>
                 <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Button fx:id="cancel" layoutX="529.0" layoutY="309.0" mnemonicParsing="false" onAction="#returnToDirectorMenus" text="Cancel" />
-                        <Button fx:id="confirm" layoutX="435.0" layoutY="309.0" mnemonicParsing="false" onAction="#addProduct" text="Add Product" />
+                        <Button fx:id="cancel" layoutX="475.0" layoutY="307.0" mnemonicParsing="false" onAction="#returnToDirectorMenus" text="Cancel" />
+                        <Button fx:id="confirm" layoutX="539.0" layoutY="307.0" mnemonicParsing="false" onAction="#addProduct" text="Done" />
                         <TextField fx:id="p_name_input" layoutX="127.0" layoutY="24.0" />
                         <TextField fx:id="p_cost_input" layoutX="127.0" layoutY="67.0" />
                         <Label layoutX="28.0" layoutY="28.0" text="Product Name :" />

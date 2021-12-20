@@ -79,4 +79,25 @@ public class FastAndFlavorousApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void switchToDirectorAddAllergens() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_allergen.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorAddProductsToMenu() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_product_to_menu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorAddAllergensToProduct() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_allergen_to_product.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

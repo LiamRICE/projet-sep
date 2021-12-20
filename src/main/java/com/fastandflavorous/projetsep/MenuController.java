@@ -1,6 +1,6 @@
 package com.fastandflavorous.projetsep;
 
-import com.fastandflavorous.projetsep.facade.menus.AbstractMenuFacade;
+import com.fastandflavorous.projetsep.facade.menus.*;
 import com.fastandflavorous.projetsep.model.menus.Allergen;
 import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.menus.Product;
@@ -20,16 +20,20 @@ import java.util.*;
 /**
  * 
  */
+// TODO - menus and products cannot be shown in the same list
 public class MenuController {
 
     @FXML
     AnchorPane listPane;
     @FXML
-    ListView mainList;
+    ListView menuListView, productListView, allergenListView, products_available_to_add, products_added, allergens_available_to_add, allergens_added;
     @FXML
-    TextField name_input, image_input, price_input, p_cost_input, p_name_input;
+    TextField name_input, image_input, price_input, p_cost_input, p_name_input, a_name_input;
     @FXML
     TextArea description_input;
+
+    private static List<Product> tempAddedProducts = new ArrayList<>();;
+    private static List<Allergen> tempAddedAllergens = new ArrayList<>();;
 
     private static AbstractMenuFacade facade;
 
@@ -40,75 +44,6 @@ public class MenuController {
         this.facade = AbstractMenuFacade.getFacade();
     }
 
-    // TODO - WORK IN PROGRESS
-    static class MenuCell extends ListCell<Menu> {
-        HBox hbox = new HBox();
-        Label label = new Label("(empty)");
-        Pane pane = new Pane();
-        Button button = new Button("DEL");
-        Menu menuItem;
-
-        public MenuCell() {
-            super();
-            hbox.getChildren().addAll(label, pane, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    MenuController.deleteMenu(menuItem);
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(Menu item, boolean empty) {
-            super.updateItem(item, empty);
-            setText(null);  // No text in label of super class
-            if (empty) {
-                menuItem = null;
-                setGraphic(null);
-            } else {
-                menuItem = item;
-                label.setText(item!=null ? item.toString() : "<null>");
-                setGraphic(hbox);
-            }
-        }
-    }
-
-    static class ProductCell extends ListCell<Product> {
-        HBox hbox = new HBox();
-        Label label = new Label("(empty)");
-        Pane pane = new Pane();
-        Button button = new Button("DEL");
-        Product productItem;
-
-        public ProductCell() {
-            super();
-            hbox.getChildren().addAll(label, pane, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    MenuController.deleteProduct(productItem);
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(Product item, boolean empty) {
-            super.updateItem(item, empty);
-            setText(null);  // No text in label of super class
-            if (empty) {
-                productItem = null;
-                setGraphic(null);
-            } else {
-                productItem = item;
-                label.setText(item!=null ? item.toString() : "<null>");
-                setGraphic(hbox);
-            }
-        }
-    }
-
     public void showMenuInputPane() throws IOException {
         FastAndFlavorousApplication.switchToDirectorAddMenus();
     }
@@ -117,8 +52,20 @@ public class MenuController {
         FastAndFlavorousApplication.switchToDirectorAddProducts();
     }
 
+    public void showAllergenInputPane() throws IOException {
+        FastAndFlavorousApplication.switchToDirectorAddAllergens();
+    }
+
     public void returnToDirectorMenus() throws IOException {
         FastAndFlavorousApplication.switchToDirectorMenus();
+    }
+
+    public void switchToDirectorAddProductToMenu() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorAddProductsToMenu();
+    }
+
+    public void switchToDirectorAddAllergenToProduct() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorAddAllergensToProduct();
     }
 
     public void getAllMenus(){
@@ -126,8 +73,8 @@ public class MenuController {
         ObservableList<Menu> list = FXCollections.observableArrayList();
         // TODO - pull list of menu and store them in our observableList.
         list.addAll(getMenus());
-        mainList.setItems(list);
-        mainList.setCellFactory(new Callback<ListView<Menu>, ListCell<Menu>>() {
+        menuListView.setItems(list);
+        menuListView.setCellFactory(new Callback<ListView<Menu>, ListCell<Menu>>() {
             @Override
             public ListCell<Menu> call(ListView<Menu> param) {
                 return new MenuCell();
@@ -141,14 +88,113 @@ public class MenuController {
         ObservableList<Product> list = FXCollections.observableArrayList();
         // TODO - pull list of menu and store them in our observableList.
         list.addAll(getProducts());
-        mainList.setItems(list);
-        mainList.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
+        productListView.setItems(list);
+        productListView.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
             @Override
             public ListCell<Product> call(ListView<Product> param) {
                 return new ProductCell();
             }
         });
         stage.show();
+    }
+
+    public void getAllAllergens(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Allergen> list = FXCollections.observableArrayList();
+        // TODO - pull list of menu and store them in our observableList.
+        list.addAll(getAllergens());
+        allergenListView.setItems(list);
+        allergenListView.setCellFactory(new Callback<ListView<Allergen>, ListCell<Allergen>>() {
+            @Override
+            public ListCell<Allergen> call(ListView<Allergen> param) {
+                return new AllergenCell();
+            }
+        });
+        stage.show();
+    }
+
+    public void getAllProductsNotAdded(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Product> list = FXCollections.observableArrayList();
+        list.addAll(getProducts());
+        list.removeAll(this.tempAddedProducts);
+        products_available_to_add.setItems(list);
+        products_available_to_add.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
+            @Override
+            public ListCell<Product> call(ListView<Product> param) {
+                return new ProductTransferCell(true);
+            }
+        });
+        stage.show();
+    }
+
+    public void getAllProductsAdded(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Product> list = FXCollections.observableArrayList();
+        list.addAll(this.tempAddedProducts);
+        products_added.setItems(list);
+        products_added.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
+            @Override
+            public ListCell<Product> call(ListView<Product> param) {
+                return new ProductTransferCell(false);
+            }
+        });
+        stage.show();
+    }
+
+    public void getAllAllergensNotAdded(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Allergen> list = FXCollections.observableArrayList();
+        list.addAll(getAllergens());
+        list.removeAll(this.tempAddedAllergens);
+        allergens_available_to_add.setItems(list);
+        allergens_available_to_add.setCellFactory(new Callback<ListView<Allergen>, ListCell<Allergen>>() {
+            @Override
+            public ListCell<Allergen> call(ListView<Allergen> param) {
+                return new AllergenTransferCell(true);
+            }
+        });
+        stage.show();
+    }
+
+    public void getAllAllergensAdded(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Allergen> list = FXCollections.observableArrayList();
+        list.addAll(this.tempAddedAllergens);
+        allergens_added.setItems(list);
+        allergens_added.setCellFactory(new Callback<ListView<Allergen>, ListCell<Allergen>>() {
+            @Override
+            public ListCell<Allergen> call(ListView<Allergen> param) {
+                return new AllergenTransferCell(false);
+            }
+        });
+        stage.show();
+    }
+
+    public static void shiftProductInTempList(Product product){
+        if(tempAddedProducts.contains(product)){
+            tempAddedProducts.remove(product);
+        }else {
+            tempAddedProducts.add(product);
+        }
+    }
+
+    public static void shiftAllergenInTempList(Allergen allergen){
+        if(tempAddedAllergens.contains(allergen)){
+            tempAddedAllergens.remove(allergen);
+        }else{
+            tempAddedAllergens.add(allergen);
+        }
+    }
+
+    public void refreshAddProductToMenuLists(){
+        this.getAllProductsAdded();
+        this.getAllProductsNotAdded();
+    }
+
+    public void refreshAddAllergenToProductLists(){
+        this.getAllAllergensAdded();
+        this.getAllAllergensNotAdded();
     }
 
     /**
@@ -160,7 +206,9 @@ public class MenuController {
         String description = description_input.getText() == null? "": description_input.getText();
         String p = price_input.getText() == null? "": price_input.getText();
         float price = Float.parseFloat(p);
-        this.facade.addMenu(name, image, description, price);
+        Menu menu = this.facade.addMenu(name, image, description, price);
+        this.addProductsToMenu(menu);
+        tempAddedProducts.clear();
         try {
             this.returnToDirectorMenus();
         } catch (IOException e) {
@@ -175,7 +223,9 @@ public class MenuController {
         String name = p_name_input.getText() == null? "": p_name_input.getText();
         String p = p_cost_input.getText() == null? "": p_cost_input.getText();
         float cost = Float.parseFloat(p);
-        this.facade.addProduct(name, cost);
+        Product product = this.facade.addProduct(name, cost);
+        this.addAllergensToProduct(product);
+        tempAddedAllergens.clear();
         try{
             this.returnToDirectorMenus();
         }catch(IOException e){
@@ -187,21 +237,33 @@ public class MenuController {
      * @return
      */
     public void addAllergen() {
-        // TODO implement here
+        String name = a_name_input.getText() == null? "": a_name_input.getText();
+        this.facade.addAllergen(name);
+        try{
+            this.returnToDirectorMenus();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
+     * @param menu
      * @return
      */
-    public void addProductToMenu() {
-        // TODO implement here
+    public void addProductsToMenu(Menu menu) {
+        for(Product p : tempAddedProducts){
+            facade.addProductToMenu(menu, p);
+        }
     }
 
     /**
+     * @param product
      * @return
      */
-    public void addAllergenToProduct() {
-        // TODO implement here
+    public void addAllergensToProduct(Product product) {
+        for(Allergen a : tempAddedAllergens){
+            facade.addAllergenToProduct(product, a);
+        }
     }
 
     /**
@@ -246,8 +308,7 @@ public class MenuController {
      * @return
      */
     public List<Allergen> getAllergens() {
-        // TODO implement here
-        return null;
+        return facade.getAllergens();
     }
 
     /**
@@ -270,8 +331,8 @@ public class MenuController {
      * @param allergen
      * @return
      */
-    public void deleteAllergen(Allergen allergen) {
-        // TODO implement here
+    public static void deleteAllergen(Allergen allergen) {
+        facade.deleteAllergen(allergen);
     }
 
 }
