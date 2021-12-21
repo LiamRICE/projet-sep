@@ -28,12 +28,15 @@ public class MenuController {
     @FXML
     ListView menuListView, productListView, allergenListView, products_available_to_add, products_added, allergens_available_to_add, allergens_added;
     @FXML
-    TextField name_input, image_input, price_input, p_cost_input, p_name_input, a_name_input;
+    TextField name_input, image_input, image_edit, price_input, price_edit, p_cost_input, p_cost_edit, p_name_input, a_name_input;
     @FXML
-    TextArea description_input;
+    TextArea description_input, description_edit;
 
-    private static List<Product> tempAddedProducts = new ArrayList<>();;
-    private static List<Allergen> tempAddedAllergens = new ArrayList<>();;
+    private static List<Product> tempAddedProducts = new ArrayList<>();
+    private static List<Allergen> tempAddedAllergens = new ArrayList<>();
+    private static Menu currentMenu;
+    private static Product currentProduct;
+    private static Allergen currentAllergen;
 
     private static AbstractMenuFacade facade;
 
@@ -68,10 +71,25 @@ public class MenuController {
         FastAndFlavorousApplication.switchToDirectorAddAllergensToProduct();
     }
 
+    public void switchToDirectorEditMenu() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorEditMenu();
+    }
+
+    public void switchToDirectorEditProduct() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorEditProduct();
+    }
+
+    public void switchToDirectorEditProductInMenu() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorEditProductsInMenu();
+    }
+
+    public void switchToDirectorEditAllergensInProduct() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorEditAllergensInProduct();
+    }
+
     public void getAllMenus(){
         Stage stage = (Stage) this.listPane.getScene().getWindow();
         ObservableList<Menu> list = FXCollections.observableArrayList();
-        // TODO - pull list of menu and store them in our observableList.
         list.addAll(getMenus());
         menuListView.setItems(list);
         menuListView.setCellFactory(new Callback<ListView<Menu>, ListCell<Menu>>() {
@@ -86,7 +104,6 @@ public class MenuController {
     public void getAllProducts(){
         Stage stage = (Stage) this.listPane.getScene().getWindow();
         ObservableList<Product> list = FXCollections.observableArrayList();
-        // TODO - pull list of menu and store them in our observableList.
         list.addAll(getProducts());
         productListView.setItems(list);
         productListView.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
@@ -101,7 +118,6 @@ public class MenuController {
     public void getAllAllergens(){
         Stage stage = (Stage) this.listPane.getScene().getWindow();
         ObservableList<Allergen> list = FXCollections.observableArrayList();
-        // TODO - pull list of menu and store them in our observableList.
         list.addAll(getAllergens());
         allergenListView.setItems(list);
         allergenListView.setCellFactory(new Callback<ListView<Allergen>, ListCell<Allergen>>() {
@@ -201,11 +217,10 @@ public class MenuController {
      * @return
      */
     public void addMenu() {
-        String name = name_input.getText() == null? "": name_input.getText();
-        String image = image_input.getText() == null? "": image_input.getText();
-        String description = description_input.getText() == null? "": description_input.getText();
-        String p = price_input.getText() == null? "": price_input.getText();
-        float price = Float.parseFloat(p);
+        String name = name_input.getText() == ""? "": name_input.getText();
+        String image = image_input.getText() == ""? "": image_input.getText();
+        String description = description_input.getText() == ""? "": description_input.getText();
+        float price = price_input.getText() == ""? 0f : Float.parseFloat(price_input.getText());
         Menu menu = this.facade.addMenu(name, image, description, price);
         this.addProductsToMenu(menu);
         tempAddedProducts.clear();
@@ -220,9 +235,8 @@ public class MenuController {
      * @return
      */
     public void addProduct() {
-        String name = p_name_input.getText() == null? "": p_name_input.getText();
-        String p = p_cost_input.getText() == null? "": p_cost_input.getText();
-        float cost = Float.parseFloat(p);
+        String name = p_name_input.getText() == ""? "": p_name_input.getText();
+        float cost = p_cost_input.getText() == ""? 0f : Float.parseFloat(p_cost_input.getText());
         Product product = this.facade.addProduct(name, cost);
         this.addAllergensToProduct(product);
         tempAddedAllergens.clear();
@@ -267,27 +281,77 @@ public class MenuController {
     }
 
     /**
-     * @param e
+     * @param menu
      * @return
      */
-    public void editMenu(ActionEvent e) {
-        // TODO implement here
+    public static void editMenu(Menu menu) {
+        currentMenu = menu;
+        tempAddedProducts.clear();
+        tempAddedProducts.addAll(menu.getProducts());
+        try {
+            FastAndFlavorousApplication.switchToDirectorEditMenu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void refreshMenuObjects(){
+        this.image_edit.setText(currentMenu.getName());
+        this.description_edit.setText(currentMenu.getDescription());
+        this.price_edit.setText(String.valueOf(currentMenu.getPrice()));
+    }
+
+    public void commitMenu(){
+        String desc = description_edit.getText() == ""? currentMenu.getDescription() : description_edit.getText();
+        String img = image_edit.getText() == ""? currentMenu.getImage() : image_edit.getText();
+        float prc = price_edit.getText() == ""? currentMenu.getPrice() : Float.parseFloat(price_edit.getText());
+        currentMenu.setDescription(desc);
+        currentMenu.setImage(img);
+        currentMenu.setPrice(prc);
+        currentMenu.getProducts().clear();
+        this.addProductsToMenu(currentMenu);
+        facade.setMenu(currentMenu);
+        currentMenu = null;
+        tempAddedProducts.clear();
+        try {
+            FastAndFlavorousApplication.switchToDirectorMenus();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * @param e
+     * @param product
      * @return
      */
-    public void editProduct(ActionEvent e) {
-        // TODO implement here
+    public static void editProduct(Product product) {
+        currentProduct = product;
+        tempAddedAllergens.clear();
+        tempAddedAllergens.addAll(product.getAllergens());
+        try {
+            FastAndFlavorousApplication.switchToDirectorEditProduct();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     * @param e
-     * @return
-     */
-    public void editAllergen(ActionEvent e) {
-        // TODO implement here
+    public void refreshProductObjects(){
+        this.p_cost_edit.setText(String.valueOf(currentProduct.getCost()));
+    }
+
+    public void commitProduct(){
+        float prc = p_cost_edit.getText() == ""? currentProduct.getCost() : Float.parseFloat(p_cost_edit.getText());
+        currentProduct.setCost(prc);
+        currentProduct.getAllergens().clear();
+        this.addAllergensToProduct(currentProduct);
+        facade.setProduct(currentProduct);
+        currentProduct = null;
+        tempAddedAllergens.clear();
+        try {
+            FastAndFlavorousApplication.switchToDirectorMenus();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

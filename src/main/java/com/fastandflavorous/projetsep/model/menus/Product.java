@@ -12,18 +12,12 @@ public class Product {
      */
     public Product(String name, float cost) {
         this.name = name;
-        this.cost = cost;
+        this.setCost(cost);
         this.allergens = new ArrayList<>();
     }
 
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private float cost;
 
     private List<Allergen> allergens;
@@ -33,15 +27,33 @@ public class Product {
     }
 
     public void removeAllergen(Allergen allergen){
-        this.allergens.remove(allergen);
+        this.getAllergens().remove(allergen);
     }
 
     public void addAllergen(Allergen a){
-        this.allergens.add(a);
+        this.getAllergens().add(a);
     }
 
     public String toString(){
-        String ret = this.name;
+        String ret = this.getName();
         return ret;
+    }
+
+    /**
+     *
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *
+     */
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 }

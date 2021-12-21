@@ -15,17 +15,24 @@ public class MenuCell extends ListCell<Menu> {
     HBox hbox = new HBox();
     Label label = new Label("(empty)");
     Pane pane = new Pane();
-    Button button = new Button("DEL");
+    Button editButton = new Button("Edit");
+    Button deleteButton = new Button("DEL");
     Menu menuItem;
 
     public MenuCell() {
         super();
-        hbox.getChildren().addAll(label, pane, button);
+        hbox.getChildren().addAll(label, pane, editButton, deleteButton);
         HBox.setHgrow(pane, Priority.ALWAYS);
-        button.setOnAction(new EventHandler<ActionEvent>() {
+        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 MenuController.deleteMenu(menuItem);
+            }
+        });
+        editButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.editMenu(menuItem);
             }
         });
     }

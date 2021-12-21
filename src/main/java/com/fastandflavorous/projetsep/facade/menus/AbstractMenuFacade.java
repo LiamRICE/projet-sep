@@ -79,50 +79,21 @@ public class AbstractMenuFacade {
     }
 
     /**
-     * @param name
+     * @param newMenu
      * @return
      */
-    public void setMenuName(String name) {
-        // TODO implement here
+    public void setMenu(Menu newMenu) {
+        if(factory.getMenuManager().getMenus().contains(newMenu)){
+            System.out.println("Menu has been modified in memory");
+        }
+        // TODO update in DAO
     }
 
     /**
-     * @param description
+     * @param newProduct
      * @return
      */
-    public void setMenuDescription(String description) {
-        // TODO implement here
-    }
-
-    /**
-     * @param price
-     * @return
-     */
-    public void setMenuPrice(float price) {
-        // TODO implement here
-    }
-
-    /**
-     * @param name
-     * @return
-     */
-    public void setProductName(String name) {
-        // TODO implement here
-    }
-
-    /**
-     * @param cost
-     * @return
-     */
-    public void setProductCost(float cost) {
-        // TODO implement here
-    }
-
-    /**
-     * @param name
-     * @return
-     */
-    public void setAllergenName(float name) {
+    public void setProduct(Product newProduct) {
         // TODO implement here
     }
 

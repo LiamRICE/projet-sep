@@ -10,17 +10,24 @@ public class ProductCell extends ListCell<Product> {
     HBox hbox = new HBox();
     Label label = new Label("(empty)");
     Pane pane = new Pane();
-    Button button = new Button("DEL");
+    Button editButton = new Button("Edit");
+    Button deleteButton = new Button("DEL");
     Product productItem;
 
     public ProductCell() {
         super();
-        hbox.getChildren().addAll(label, pane, button);
+        hbox.getChildren().addAll(label, pane, editButton, deleteButton);
         HBox.setHgrow(pane, Priority.ALWAYS);
-        button.setOnAction(new EventHandler<ActionEvent>() {
+        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 MenuController.deleteProduct(productItem);
+            }
+        });
+        editButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.editProduct(productItem);
             }
         });
     }

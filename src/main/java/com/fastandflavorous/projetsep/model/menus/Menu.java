@@ -12,30 +12,18 @@ public class Menu {
      */
     public Menu(String name, String image, String description, float price){
         this.name = name;
-        this.image = image;
-        this.description = description;
-        this.price = price;
+        this.setImage(image);
+        this.setDescription(description);
+        this.setPrice(price);
         this.products = new ArrayList<>();
     }
 
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private String image;
 
-    /**
-     * 
-     */
     private String description;
 
-    /**
-     * 
-     */
     private float price;
 
     private List<Product> products;
@@ -57,6 +45,11 @@ public class Menu {
         return this.products;
     }
 
+    public void setProducts(List<Product> products){
+        this.products.clear();
+        this.products.addAll(products);
+    }
+
     public void removeProduct(Product product){
         this.products.remove(product);
     }
@@ -75,12 +68,51 @@ public class Menu {
     }
 
     public String toString(){
-        String ret = this.name+" | ";
+        String ret = this.getName() +" | ";
         for(Product product : products){
             ret += product.toString() + ", ";
         }
-        ret += " | "+this.price;
+        ret += " | "+ this.getPrice();
         return ret;
     }
 
+    /**
+     *
+     */
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    /**
+     *
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     *
+     */
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    /**
+     *
+     */
+    public String getName() {
+        return name;
+    }
 }
