@@ -6,7 +6,7 @@ import com.fastandflavorous.projetsep.model.users.*;
 /**
  * 
  */
-public abstract class AbstractUserFacade {
+public abstract class  AbstractUserFacade {
 
     private AbstractFactory factory;
     private User user;
