@@ -4,7 +4,7 @@ import com.fastandflavorous.projetsep.model.users.Client;
 import com.fastandflavorous.projetsep.model.users.Employee;
 
 /**
- * 
+ *
  */
 public abstract class AbstractUserDAO {
 
@@ -15,19 +15,6 @@ public abstract class AbstractUserDAO {
      * Default constructor
      */
     protected AbstractUserDAO() {
-    }
-
-    public static AbstractUserDAO getDAO(String daoType){
-        if(daoType == "MySQL") {
-            if (dao == null) {
-                synchronized (sync) {
-                    if (dao == null) {
-                        dao = new MySQLUserDAO();
-                    }
-                }
-            }
-        }
-        return dao;
     }
 
     /**

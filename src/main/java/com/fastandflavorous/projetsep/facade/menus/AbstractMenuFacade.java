@@ -26,21 +26,21 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Menu> getMenus() {
-        return factory.getMenuManager().getMenus();
+        return MenuManager.getMenuManager().getMenus();
     }
 
     /**
      * @return
      */
     public List<Product> getProducts() {
-        return factory.getMenuManager().getProducts();
+        return MenuManager.getMenuManager().getProducts();
     }
 
     /**
      * @return
      */
     public List<Allergen> getAllergens() {
-        return factory.getMenuManager().getAllergens();
+        return MenuManager.getMenuManager().getAllergens();
     }
 
     /**
@@ -51,7 +51,7 @@ public class AbstractMenuFacade {
      */
     public Menu addMenu(String name, String image, String description, float price) {
         Menu menu = new Menu(name, image, description, price);
-        factory.getMenuManager().addMenu(menu);
+        MenuManager.getMenuManager().addMenu(menu);
         factory.getMenuDAO().addMenu(menu);
         return menu;
     }
@@ -63,7 +63,7 @@ public class AbstractMenuFacade {
      */
     public Product addProduct(String name, float cost) {
         Product product = new Product(name, cost);
-        factory.getMenuManager().addProduct(product);
+        MenuManager.getMenuManager().addProduct(product);
         factory.getMenuDAO().addProduct(product);
         return product;
     }
@@ -74,7 +74,7 @@ public class AbstractMenuFacade {
      */
     public void addAllergen(String name) {
         Allergen allergen = new Allergen(name);
-        factory.getMenuManager().addAllergen(allergen);
+        MenuManager.getMenuManager().addAllergen(allergen);
         factory.getMenuDAO().addAllergen(allergen);
     }
 
@@ -83,7 +83,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void setMenu(Menu newMenu) {
-        if(factory.getMenuManager().getMenus().contains(newMenu)){
+        if(MenuManager.getMenuManager().getMenus().contains(newMenu)){
             System.out.println("Menu has been modified in memory");
         }
         // TODO update in DAO
@@ -120,7 +120,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void deleteMenu(Menu menu) {
-        factory.getMenuManager().removeMenu(menu);
+        MenuManager.getMenuManager().removeMenu(menu);
         factory.getMenuDAO().deleteMenu(menu);
     }
 
@@ -129,7 +129,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void deleteProduct(Product product) {
-        factory.getMenuManager().removeProduct(product);
+        MenuManager.getMenuManager().removeProduct(product);
         factory.getMenuDAO().deleteProduct(product);
     }
 
@@ -138,7 +138,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void deleteAllergen(Allergen allergen) {
-        factory.getMenuManager().removeAllergen(allergen);
+        MenuManager.getMenuManager().removeAllergen(allergen);
         factory.getMenuDAO().deleteAllergen(allergen);
     }
 
