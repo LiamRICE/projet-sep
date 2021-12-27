@@ -7,12 +7,12 @@ import java.sql.*;
 
 
 /**
- * 
+ *
  */
 public class MySQLUserDAO extends AbstractUserDAO {
 
-    private static Connection connection ;
-
+    private Connection connection ;
+/*
     private static Statement statement ;
 
     private static String url = "jdbc:mysql://mysql-igstudent74.alwaysdata.net:3306/igstudent74_fastandflavorous";
@@ -20,12 +20,12 @@ public class MySQLUserDAO extends AbstractUserDAO {
     private static String user = "250831";
 
     private static String password = "fastandflavorous";
-
+*/
     /**
      * This method is used to establish the connection with the database
      * @return it returns a Connection static object that allows us to communicate with the databse
      */
-
+/*
     public static Connection getConnection(){
         Connection connection = null;
         try{
@@ -40,12 +40,12 @@ public class MySQLUserDAO extends AbstractUserDAO {
         }
         return connection;
     }
-
+*/
     /**
      * Default constructor
      */
-    public MySQLUserDAO(){
-        this.connection = getConnection();
+    public MySQLUserDAO(Connection connection){
+        this.connection = connection;
     }
 
     /**
@@ -66,6 +66,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
         } catch(SQLException e){
             System.err.println(e);
         }
+        System.out.println(employee);
         return employee;
     }
 
