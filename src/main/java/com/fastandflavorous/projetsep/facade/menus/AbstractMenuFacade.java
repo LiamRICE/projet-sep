@@ -26,21 +26,21 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Menu> getMenus() {
-        return MenuManager.getMenuManager().getMenus();
+        return factory.getMenuDAO().getMenus();
     }
 
     /**
      * @return
      */
     public List<Product> getProducts() {
-        return MenuManager.getMenuManager().getProducts();
+        return factory.getMenuDAO().getProducts();
     }
 
     /**
      * @return
      */
     public List<Allergen> getAllergens() {
-        return MenuManager.getMenuManager().getAllergens();
+        return factory.getMenuDAO().getAllergens();
     }
 
     /**

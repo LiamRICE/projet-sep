@@ -42,7 +42,7 @@ public class MySqlFactory extends AbstractFactory{
     }
 
     public AbstractMenuDAO getMenuDAO(){
-        return new MySQLMenuDAO();
+        return new MySQLMenuDAO(connection);
     }
 
 }

@@ -36,7 +36,6 @@ public class MenuController {
     private static List<Allergen> tempAddedAllergens = new ArrayList<>();
     private static Menu currentMenu;
     private static Product currentProduct;
-    private static Allergen currentAllergen;
 
     private static AbstractMenuFacade facade;
 

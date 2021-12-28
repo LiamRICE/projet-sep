@@ -1,5 +1,6 @@
 package com.fastandflavorous.projetsep.dao.menus;
 
+import java.sql.Connection;
 import java.util.*;
 
 import com.fastandflavorous.projetsep.model.menus.*;
@@ -21,11 +22,11 @@ public abstract class AbstractMenuDAO {
     private static AbstractMenuDAO menuDAO;
     private static Object sync = new Object();
 
-    public static AbstractMenuDAO getMenuDAO() {
+    public static AbstractMenuDAO getMenuDAO(Connection connection) {
         if(menuDAO == null){
             synchronized (sync){
                 if(menuDAO == null){
-                    menuDAO = new MySQLMenuDAO();
+                    menuDAO = new MySQLMenuDAO(connection);
                 }
             }
         }
@@ -36,7 +37,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public List<Menu> getMenus() {
-        // TODO implement here
         return null;
     }
 
@@ -46,7 +46,6 @@ public abstract class AbstractMenuDAO {
      */
     public void addMenu(Menu menu) {
         System.out.println("Adding a new menu : "+menu.toString());
-        // TODO implement here
     }
 
     /**
@@ -63,14 +62,12 @@ public abstract class AbstractMenuDAO {
      */
     public void deleteMenu(Menu menu) {
         System.out.println("Deleting menu : "+menu.toString());
-        // TODO implement here
     }
 
     /**
      * @return
      */
     public List<Product> getProducts() {
-        // TODO implement here
         return null;
     }
 
@@ -79,7 +76,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void addProduct(Product product) {
-        // TODO implement here
     }
 
     /**
@@ -95,14 +91,12 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void deleteProduct(Product product) {
-        // TODO implement here
     }
 
     /**
      * @return
      */
     public List<Allergen> getAllergens() {
-        // TODO implement here
         return null;
     }
 
@@ -111,7 +105,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void addAllergen(Allergen allergen) {
-        // TODO implement here
     }
 
     /**
@@ -128,8 +121,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void deleteAllergen(Allergen allergen) {
-        // TODO implement here
-        // remove all links to this allergen from products
     }
 
 }

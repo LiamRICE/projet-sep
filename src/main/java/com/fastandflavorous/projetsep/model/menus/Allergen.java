@@ -23,4 +23,7 @@ public class Allergen {
         return this.name;
     }
 
+    public String getName() {
+        return this.name;
+    }
 }
