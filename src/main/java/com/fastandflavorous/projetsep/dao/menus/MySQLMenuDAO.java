@@ -1,6 +1,7 @@
 package com.fastandflavorous.projetsep.dao.menus;
 
 import com.fastandflavorous.projetsep.model.menus.Allergen;
+import com.fastandflavorous.projetsep.model.menus.FullMenuGroup;
 import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.menus.Product;
 import com.fastandflavorous.projetsep.model.users.Employee;
@@ -79,6 +80,14 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
             System.err.println(e);
         }
         return allergenList;
+    }
+
+    public FullMenuGroup getAll(){
+        List<Menu> menus = getMenus();
+        List<Product> products = getProducts();
+        List<Allergen> allergens = getAllergens();
+        // get links and link all menus to products and products to allergens
+        return new FullMenuGroup(menus, products, allergens);
     }
 
     private int freeMenuIndex(){
@@ -224,4 +233,25 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
         // remove all links to this allergen from products
     }
 
+    public void editMenu(Menu menu){
+        String query = "UPDATE Menu SET image='"+menu.getImage()+"', description='"+menu.getDescription()+"', price="+menu.getPrice()+" WHERE name='"+menu.getName()+"';";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        // reset links to products
+    }
+
+    public void editProduct(Product product){
+        String query = "UPDATE Product SET cost="+product.getCost()+" WHERE name='"+product.getName()+"';";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        // reset links to allergens
+    }
 }

@@ -33,6 +33,10 @@ public abstract class AbstractMenuDAO {
         return menuDAO;
     }
 
+    public FullMenuGroup getAll(){
+        return null;
+    }
+
     /**
      * @return
      */
@@ -53,7 +57,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void editMenu(Menu menu) {
-        // TODO implement here
     }
 
     /**
@@ -83,7 +86,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void editProduct(Product product) {
-        // TODO implement here
     }
 
     /**
@@ -112,8 +114,6 @@ public abstract class AbstractMenuDAO {
      * @return
      */
     public void editAllergen(Allergen allergen) {
-        // TODO implement here
-        // remove all links to this product from menus
     }
 
     /**

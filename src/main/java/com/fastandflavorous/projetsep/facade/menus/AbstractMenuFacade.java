@@ -26,21 +26,30 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Menu> getMenus() {
-        return factory.getMenuDAO().getMenus();
+        FullMenuGroup all = factory.getMenuDAO().getAll();
+        List<Menu> menus = all.getMenus();
+        MenuManager.getMenuManager().setMenuList(menus);
+        return menus;
     }
 
     /**
      * @return
      */
     public List<Product> getProducts() {
-        return factory.getMenuDAO().getProducts();
+        FullMenuGroup all = factory.getMenuDAO().getAll();
+        List<Product> products = all.getProducts();
+        MenuManager.getMenuManager().setProductList(products);
+        return products;
     }
 
     /**
      * @return
      */
     public List<Allergen> getAllergens() {
-        return factory.getMenuDAO().getAllergens();
+        FullMenuGroup all = factory.getMenuDAO().getAll();
+        List<Allergen> allergens = all.getAllergens();
+        MenuManager.getMenuManager().setAllergenList(allergens);
+        return allergens;
     }
 
     /**
@@ -83,10 +92,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void setMenu(Menu newMenu) {
-        if(MenuManager.getMenuManager().getMenus().contains(newMenu)){
-            System.out.println("Menu has been modified in memory");
-        }
-        // TODO update in DAO
+        factory.getMenuDAO().editMenu(newMenu);
     }
 
     /**
@@ -94,7 +100,7 @@ public class AbstractMenuFacade {
      * @return
      */
     public void setProduct(Product newProduct) {
-        // TODO implement here
+        factory.getMenuDAO().editProduct(newProduct);
     }
 
     /**

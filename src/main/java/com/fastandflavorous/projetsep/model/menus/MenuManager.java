@@ -108,6 +108,18 @@ public class MenuManager {
         this.allergens.remove(allergen);
     }
 
+    public void setMenuList(List<Menu> menus){
+        this.menus = menus;
+    }
+
+    public void setProductList(List<Product> products){
+        this.products = products;
+    }
+
+    public void setAllergenList(List<Allergen> allergens){
+        this.allergens = allergens;
+    }
+
     public List<Menu> getMenus(){
         return this.menus;
     }
