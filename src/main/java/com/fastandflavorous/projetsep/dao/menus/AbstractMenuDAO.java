@@ -33,10 +33,6 @@ public abstract class AbstractMenuDAO {
         return menuDAO;
     }
 
-    public FullMenuGroup getAll(){
-        return null;
-    }
-
     /**
      * @return
      */
@@ -66,61 +62,4 @@ public abstract class AbstractMenuDAO {
     public void deleteMenu(Menu menu) {
         System.out.println("Deleting menu : "+menu.toString());
     }
-
-    /**
-     * @return
-     */
-    public List<Product> getProducts() {
-        return null;
-    }
-
-    /**
-     * @param product
-     * @return
-     */
-    public void addProduct(Product product) {
-    }
-
-    /**
-     * @param product
-     * @return
-     */
-    public void editProduct(Product product) {
-    }
-
-    /**
-     * @param product
-     * @return
-     */
-    public void deleteProduct(Product product) {
-    }
-
-    /**
-     * @return
-     */
-    public List<Allergen> getAllergens() {
-        return null;
-    }
-
-    /**
-     * @param allergen
-     * @return
-     */
-    public void addAllergen(Allergen allergen) {
-    }
-
-    /**
-     * @param allergen
-     * @return
-     */
-    public void editAllergen(Allergen allergen) {
-    }
-
-    /**
-     * @param allergen
-     * @return
-     */
-    public void deleteAllergen(Allergen allergen) {
-    }
-
 }

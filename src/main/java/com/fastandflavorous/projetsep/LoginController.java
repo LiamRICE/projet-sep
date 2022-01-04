@@ -66,7 +66,7 @@ public class LoginController {
     @FXML
     public void handleEmployeeLogin() throws IOException {
         if(employeeLogin(emailInput.getText(), passwordInput.getText())) {
-            FastAndFlavorousApplication.switchToDirectorMenus();
+            FastAndFlavorousApplication.switchToDirectorHome();
         }else{
             this.employeeWelcomeLabel.setText("DENIED!");
         }
