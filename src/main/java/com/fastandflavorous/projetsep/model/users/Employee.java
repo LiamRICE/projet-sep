@@ -8,17 +8,20 @@ public class Employee extends User {
     /**
      * Default constructor
      */
-    public Employee(String name, String email, String password, float salary) {
+    public Employee(String name, String email, String password, float salary, boolean id) {
         super(name);
         this.email = email;
         this.password = password;
         this.salary = salary;
+        this.isDirector = id;
     }
 
     /**
      * 
      */
     private String email;
+
+    private boolean isDirector;
 
     /**
      * 
@@ -67,6 +70,10 @@ public class Employee extends User {
      */
     public void setName(String name) {
         // TODO implement here
+    }
+
+    public boolean isDirector(){
+        return this.isDirector;
     }
 
 }

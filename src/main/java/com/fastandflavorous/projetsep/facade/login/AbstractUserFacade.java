@@ -35,5 +35,5 @@ public abstract class  AbstractUserFacade {
     public abstract boolean checkEmployeeLogin(String email, String password);
 
 
-
+    public abstract boolean isCurrentUserDirector();
 }
