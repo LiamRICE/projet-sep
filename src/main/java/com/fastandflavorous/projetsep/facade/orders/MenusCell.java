@@ -1,2 +1,5 @@
-package com.fastandflavorous.projetsep.facade.orders;public class MenusCell {
+package com.fastandflavorous.projetsep.facade.orders;
+
+public class MenusCell {
+
 }

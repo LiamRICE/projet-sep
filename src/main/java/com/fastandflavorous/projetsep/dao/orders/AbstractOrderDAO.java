@@ -3,8 +3,6 @@ package com.fastandflavorous.projetsep.dao.orders;
 import java.sql.Connection;
 import java.util.*;
 
-import com.fastandflavorous.projetsep.dao.menus.AbstractMenuDAO;
-import com.fastandflavorous.projetsep.dao.menus.MySQLMenuDAO;
 import com.fastandflavorous.projetsep.model.orders.*;
 
 public abstract class AbstractOrderDAO {
@@ -31,5 +29,43 @@ public abstract class AbstractOrderDAO {
         }
         return orderDAO;
     }
+
+    /**
+     * @return
+     */
+    public List<Order> getOrders() {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    public Order getOrder(String id){return null;}
+
+    /**
+     * @param order
+     * @return
+     */
+    public void addOrder(Order order) {
+        System.out.println("Adding a new order : "+order.toString());
+    }
+
+    /**
+     * @param order
+     * @return
+     */
+    public void editOrder(Order order) {}
+
+    /**
+     * @param order
+     * @return
+     */
+    public void deleteOrder(Order order) {
+        System.out.println("Deleting ordeer : "+order.toString());
+    }
+
+
+
+
 
 }

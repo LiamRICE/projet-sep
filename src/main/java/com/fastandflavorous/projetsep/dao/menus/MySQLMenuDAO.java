@@ -223,5 +223,4 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
         }
         // remove all links to this allergen from products
     }
-
 }
