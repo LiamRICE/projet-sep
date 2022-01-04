@@ -95,5 +95,9 @@ public class UserFacade extends AbstractUserFacade {
         }
     }
 
+    public boolean isCurrentUserDirector(){
+        return ((Employee) this.currentUser).isDirector();
+    }
+
 
 }

@@ -26,21 +26,9 @@ public class AbstractMenuFacade {
      * @return
      */
     public List<Menu> getMenus() {
-        return factory.getMenuDAO().getMenus();
-    }
-
-    /**
-     * @return
-     */
-    public List<Product> getProducts() {
-        return factory.getMenuDAO().getProducts();
-    }
-
-    /**
-     * @return
-     */
-    public List<Allergen> getAllergens() {
-        return factory.getMenuDAO().getAllergens();
+        List<Menu> menus = factory.getMenuDAO().getMenus();
+        MenuManager.getMenuManager().setMenuList(menus);
+        return menus;
     }
 
     /**
@@ -57,62 +45,11 @@ public class AbstractMenuFacade {
     }
 
     /**
-     * @param name
-     * @param cost
-     * @return
-     */
-    public Product addProduct(String name, float cost) {
-        Product product = new Product(name, cost);
-        MenuManager.getMenuManager().addProduct(product);
-        factory.getMenuDAO().addProduct(product);
-        return product;
-    }
-
-    /**
-     * @param name
-     * @return
-     */
-    public void addAllergen(String name) {
-        Allergen allergen = new Allergen(name);
-        MenuManager.getMenuManager().addAllergen(allergen);
-        factory.getMenuDAO().addAllergen(allergen);
-    }
-
-    /**
      * @param newMenu
      * @return
      */
     public void setMenu(Menu newMenu) {
-        if(MenuManager.getMenuManager().getMenus().contains(newMenu)){
-            System.out.println("Menu has been modified in memory");
-        }
-        // TODO update in DAO
-    }
-
-    /**
-     * @param newProduct
-     * @return
-     */
-    public void setProduct(Product newProduct) {
-        // TODO implement here
-    }
-
-    /**
-     * @param menu
-     * @param product
-     * @return
-     */
-    public void addProductToMenu(Menu menu, Product product) {
-        menu.addProduct(product);
-    }
-
-    /**
-     * @param product
-     * @param allergen
-     * @return
-     */
-    public void addAllergenToProduct(Product product, Allergen allergen) {
-        product.addAllergen(allergen);
+        factory.getMenuDAO().editMenu(newMenu);
     }
 
     /**
@@ -123,23 +60,4 @@ public class AbstractMenuFacade {
         MenuManager.getMenuManager().removeMenu(menu);
         factory.getMenuDAO().deleteMenu(menu);
     }
-
-    /**
-     * @param product
-     * @return
-     */
-    public void deleteProduct(Product product) {
-        MenuManager.getMenuManager().removeProduct(product);
-        factory.getMenuDAO().deleteProduct(product);
-    }
-
-    /**
-     * @param allergen
-     * @return
-     */
-    public void deleteAllergen(Allergen allergen) {
-        MenuManager.getMenuManager().removeAllergen(allergen);
-        factory.getMenuDAO().deleteAllergen(allergen);
-    }
-
 }

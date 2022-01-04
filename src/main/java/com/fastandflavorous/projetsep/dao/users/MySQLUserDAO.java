@@ -56,17 +56,18 @@ public class MySQLUserDAO extends AbstractUserDAO {
     public Employee getEmployee(String email) {
         String query = "SELECT * FROM Employee WHERE email ='"+email+"';";
         Employee employee = null;
+        boolean isDirector = false;
         try{
             PreparedStatement ps=connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"));
+                isDirector = rs.getBoolean("isDirector");
+                employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"), isDirector);
             }
 
         } catch(SQLException e){
             System.err.println(e);
         }
-        System.out.println(employee);
         return employee;
     }
 
