@@ -40,6 +40,10 @@ public abstract class AbstractMenuDAO {
         return null;
     }
 
+    public int getMenuIndex(String menuName){
+        return 0;
+    };
+
     /**
      * @param menu
      * @return

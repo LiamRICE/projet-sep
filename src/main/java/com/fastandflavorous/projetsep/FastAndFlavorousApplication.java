@@ -90,4 +90,18 @@ public class FastAndFlavorousApplication extends Application {
     public static void logOff() throws IOException{
         returnToLoginType();
     }
+
+    public static void switchToDirectorAddStock() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_stock.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorStocks() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_stocks.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
