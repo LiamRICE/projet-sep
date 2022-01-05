@@ -57,7 +57,7 @@ public class MySQLScheduleDAO extends AbstractScheduleDAO{
 
         try {
             stmt = connection.createStatement();
-            String update = "INSERT INTO Cost VALUES('"+startingTime+"',"+endingTime+",'"+new java.sql.Date(date.getTime()) +"';)";
+            String update = "INSERT INTO Slot VALUES('"+startingTime+"',"+endingTime+",'"+new java.sql.Date(date.getTime()) +"';)";
             stmt.executeUpdate(
                     update,
                     Statement.RETURN_GENERATED_KEYS);
