@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Slot {
 
+    private int idSlot;
+
     private String startingTime;
 
     private String endingTime;
@@ -16,10 +18,21 @@ public class Slot {
 
     private List<Employee> listOfAssignedEmploye;
 
-    public Slot(String startingTime,String endingTime){
+    public Slot(int idSlot, String startingTime,String endingTime){
+        this.idSlot = idSlot;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
         listOfAssignedEmploye = new ArrayList<>();
+    }
+
+    public Slot(int idSlot,String startingTime,String endingTime,Date date){
+        this(idSlot,startingTime,endingTime);
+        this.date = date;
+    }
+
+    public Slot(int idSlot,String startingTime,String endingTime,Date date, List<Employee> employees){
+        this(idSlot,startingTime,endingTime,date);
+        this.listOfAssignedEmploye = employees;
     }
 
     public boolean isEmpty(){
@@ -36,5 +49,9 @@ public class Slot {
 
     public void removeEmployee(Employee employee){
         listOfAssignedEmploye.remove(employee);
+    }
+
+    public int getIdSlot(){
+        return idSlot;
     }
 }
