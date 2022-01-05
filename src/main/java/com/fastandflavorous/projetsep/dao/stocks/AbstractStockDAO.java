@@ -27,11 +27,5 @@ public class AbstractStockDAO {
         return new ArrayList<>();
     }
 
-    public void addStock(String name, int quantity){
-
-    }
-
-    public void removeStock(String name, int quantity){
-
-    }
+    public void editStock(int id, int quantity){}
 }

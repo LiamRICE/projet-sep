@@ -37,13 +37,28 @@ public class MySQLStockDAO extends AbstractStockDAO{
         return stockList;
     }
 
-    public void addStock(String name, int quantity){
-
+    public int getStockQuantity(int id){
+        String query = "SELECT quantity FROM Menu, Stock WHERE idProduct = idMenu AND idProduct="+id+";";
+        int num=0;
+        try{
+            PreparedStatement ps=connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            num = rs.getInt("quantity");
+        } catch(SQLException e){
+            System.err.println(e);
+        }
+        return num;
     }
 
-    public void removeStock(String name, int quantity){
-
+    public void editStock(int id, int quantity){
+        int q = getStockQuantity(id) + quantity;
+        String query = "UPDATE Stock SET quantity="+q+" WHERE idProduct="+id+";";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
-
-
 }

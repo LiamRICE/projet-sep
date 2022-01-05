@@ -49,6 +49,7 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
         try{
             PreparedStatement ps=connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+            rs.next();
             index = rs.getInt("idMenu");
         } catch(SQLException e){
             System.err.println(e);
