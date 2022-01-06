@@ -16,7 +16,7 @@ public class FastAndFlavorousApplication extends Application {
     @Override
     public void start(Stage st) throws IOException {
         stage = st;
-        FXMLLoader fxmlLoader = new FXMLLoader(FastAndFlavorousApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FastAndFlavorousApplication.class.getResource("director_costs.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Fast and Flavorous");
         stage.setScene(scene);

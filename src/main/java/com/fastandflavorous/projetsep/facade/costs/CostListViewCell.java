@@ -7,8 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CostListViewCell extends ListCell<Cost> {
 
@@ -21,6 +25,9 @@ public class CostListViewCell extends ListCell<Cost> {
     private FXMLLoader mLLoader;
 
     private CostController parent;
+
+    @FXML
+    private GridPane gridPane;
 
     public CostListViewCell(CostController parent){
         this.parent = parent;
@@ -75,11 +82,12 @@ public class CostListViewCell extends ListCell<Cost> {
                 }
 
             }
-            System.out.println(cost.getLabel());
             costLabel.setText(cost.getLabel());
             amount.setText(String.valueOf(cost.getAmount()));
-            System.out.println(mLLoader.getController().getClass());
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            lastModificationDate.setText(dateFormat.format(cost.getLastModificationDate()));
             setText(null);
+            setGraphic(gridPane);
         }
-        }
+    }
 }

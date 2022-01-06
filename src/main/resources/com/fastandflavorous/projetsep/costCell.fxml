@@ -2,24 +2,33 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="101.0" minWidth="0.0" prefWidth="0.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="86.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="165.0" minWidth="0.0" prefWidth="146.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="152.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="152.0" />
-      <ColumnConstraints />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="89.0" minWidth="0.0" prefWidth="86.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="73.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="92.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="74.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="74.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label fx:id="costLabel" GridPane.columnIndex="1" />
-        <Label fx:id="amount" GridPane.columnIndex="2" />
-        <Label fx:id="lastModjificationDate" GridPane.columnIndex="3" />
-        <Button fx:id="edit" prefHeight="24.0" prefWidth="182.0" text="Edit" GridPane.columnIndex="4" />
-        <Button fx:id="delete" prefHeight="24.0" prefWidth="131.0" text="Delete" GridPane.columnIndex="5" />
+        <Label fx:id="costLabel" GridPane.columnIndex="0">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+        <Label fx:id="amount" GridPane.columnIndex="1">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+        <Label fx:id="lastModificationDate" GridPane.columnIndex="2">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+        <Button fx:id="edit" prefHeight="24.0" prefWidth="100.0" text="Edit" GridPane.columnIndex="3" />
+        <Button fx:id="delete" prefHeight="24.0" prefWidth="100.0" text="Delete" GridPane.columnIndex="4" />
     </children>
 </GridPane>
