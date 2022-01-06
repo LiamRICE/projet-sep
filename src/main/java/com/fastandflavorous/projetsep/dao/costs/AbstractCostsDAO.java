@@ -17,5 +17,5 @@ public abstract class AbstractCostsDAO {
 
     public abstract void setCostAmount(int idCost, float amount, Date modificationDate);
 
-    public abstract void setCostLabel(int idCost, String label);
+    public abstract void setCostLabel(int idCost, String label, Date modificationDate);
 }

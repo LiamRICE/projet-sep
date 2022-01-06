@@ -10,10 +10,9 @@ import java.util.List;
 
 public class CostsFacade extends AbstractCostsFacade{
     private final AbstractCostsDAO costsDAO;
-    private final CostDashoboard costDashoboard;
+    private static final CostDashoboard costDashoboard = new CostDashoboard();
     public CostsFacade() {
         costsDAO = AbstractFactory.getFactory().getCostsDAO();
-        costDashoboard = new CostDashoboard();
 
     }
 
@@ -43,6 +42,11 @@ public class CostsFacade extends AbstractCostsFacade{
     public void setAmount(int idCost, float newAmount){
         costsDAO.setCostAmount(idCost,newAmount,new Date());
         costDashoboard.getCostById(idCost).setAmount(newAmount);
+    }
+
+    public void setLabel(int idCost, String newLabel){
+        costsDAO.setCostLabel(idCost,newLabel,new Date());
+        costDashoboard.getCostById(idCost).setLabel(newLabel);
     }
 
     public void addAmountToCostById(int idCost,float additionalAmount){

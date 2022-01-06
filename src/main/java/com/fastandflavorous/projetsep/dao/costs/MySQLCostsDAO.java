@@ -109,8 +109,8 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
         }
     }
 
-    public void setCostLabel(int idCost, String label){
-        String update = "UPDATE Cost SET label = "+label+" WHERE idCost  ="+idCost+";";
+    public void setCostLabel(int idCost, String label,Date modificationDate){
+        String update = "UPDATE Cost SET label = '"+label+"', lastModificationDate='"+new java.sql.Date(modificationDate.getTime()) +"' WHERE idCost  ="+idCost+";";
         Cost cost = null;
         try{
             PreparedStatement ps=connection.prepareStatement(update);

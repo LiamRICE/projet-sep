@@ -72,12 +72,6 @@ public class CostController implements Initializable {
         }
     }
 
-    public void getAllCosts(){
-
-    }
-
-
-
     public void addCost() throws IOException {
         facade.addCost(label_cost_input.getText());
         FastAndFlavorousApplication.switchToDirectorCosts();
@@ -97,12 +91,21 @@ public class CostController implements Initializable {
         setCostListView();
     }
 
-    public static void editCost(Cost cost) throws IOException {
+    public static void switchingToEditCost(Cost cost) throws IOException {
         currentCost = cost;
         FastAndFlavorousApplication.switchToDirectorEditCost();
     }
 
-    public void editCurrentCost(){
+    public void editCost() throws IOException {
+        if(!label_cost_input.getText().equals(currentCost.getLabel())){
+            facade.setLabel(currentCost.getIdCost(),label_cost_input.getText());
 
+        }
+        float valueAmountInput = Float.parseFloat(amount_cost_input.getText());
+        if(valueAmountInput != (currentCost.getAmount())){
+            facade.setAmount(currentCost.getIdCost(), Float.parseFloat(amount_cost_input.getText()));
+
+        }
+        FastAndFlavorousApplication.switchToDirectorCosts();
     }
 }

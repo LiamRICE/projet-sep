@@ -98,7 +98,7 @@ public class CostListViewCell extends ListCell<Cost> {
                 @Override
                 public void handle(ActionEvent event) {
                     try {
-                        parent.editCost(cost);
+                        parent.switchingToEditCost(cost);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

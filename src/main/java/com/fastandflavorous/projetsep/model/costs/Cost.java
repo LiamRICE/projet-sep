@@ -30,6 +30,11 @@ public class Cost {
 
     public String getLabel(){ return label;}
 
+    public void setLabel(String newLabel){
+        label = newLabel;
+        lastModificationDate = new Date();
+    }
+
     public void setAmount(float newAmount){
         amount = newAmount;
         lastModificationDate = new Date();

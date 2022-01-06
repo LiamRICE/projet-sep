@@ -16,6 +16,8 @@ public abstract class AbstractCostsFacade {
 
     public abstract void setAmount(int idCost, float newAmount);
 
+    public abstract void setLabel(int idCost, String newLabel);
+
     public abstract void addAmountToCostById(int idCost,float additionalAmount);
 
 
