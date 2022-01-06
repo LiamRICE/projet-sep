@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,21 +32,25 @@ public class CostController implements Initializable {
     private ObservableList<Cost> costObservableList;
 
     @FXML
-    Button get_costs,add_cost;
+    Button add_cost;
 
     @FXML
-    Label test;
+    TextField label_cost_input;
 
     private AbstractCostsFacade facade;
+
+    // Edit cost
+
+    @FXML
+    TextField amount_cost_input;
+
+    private static Cost currentCost;
 
     public CostController(){
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        this.facade = new CostsFacade();
-
+    public void setCostListView(){
         costObservableList = FXCollections.observableArrayList();
         costObservableList.addAll(facade.getAllCosts());
         for(Cost cost: facade.getAllCosts() ){
@@ -55,11 +60,49 @@ public class CostController implements Initializable {
         costListView.setCellFactory(costListView -> new CostListViewCell(this));
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        this.facade = new CostsFacade();
+        if(costListView != null){
+            setCostListView();
+        }
+        if(amount_cost_input != null){
+            label_cost_input.setText(currentCost.getLabel());
+            amount_cost_input.setText(String.valueOf(currentCost.getAmount()));
+        }
+    }
+
     public void getAllCosts(){
 
     }
 
-    public void addCost(){
+
+
+    public void addCost() throws IOException {
+        facade.addCost(label_cost_input.getText());
+        FastAndFlavorousApplication.switchToDirectorCosts();
+
+    }
+
+    public void switchingToAddCost() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorAddCost();
+    }
+
+   public void returnDirectorCosts() throws IOException {
+       FastAndFlavorousApplication.switchToDirectorCosts();
+   }
+
+    public void deleteCost(Cost cost){
+        facade.deleteCost(cost.getIdCost());
+        setCostListView();
+    }
+
+    public static void editCost(Cost cost) throws IOException {
+        currentCost = cost;
+        FastAndFlavorousApplication.switchToDirectorEditCost();
+    }
+
+    public void editCurrentCost(){
 
     }
 }

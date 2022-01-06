@@ -60,7 +60,7 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
 
         try {
             stmt = connection.createStatement();
-            String update = "INSERT INTO Cost VALUES('"+label+"',"+0+",'"+new java.sql.Date(creationDate.getTime()) +"';)";
+            String update = "INSERT INTO Cost VALUES(NULL,'"+label+"',"+0+",'"+new java.sql.Date(creationDate.getTime()) +"');";
             stmt.executeUpdate(
                     update,
                     Statement.RETURN_GENERATED_KEYS);
@@ -90,7 +90,7 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
         Cost cost = null;
         try{
             PreparedStatement ps=connection.prepareStatement(update);
-            ResultSet rs = ps.executeQuery();
+            ps.executeUpdate();
 
         } catch(SQLException e){
             System.err.println(e);
@@ -102,7 +102,7 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
         String update = "UPDATE Cost SET amount = "+amount+", lastModificationDate='"+new java.sql.Date(modificationDate.getTime()) +"' WHERE idCost  ="+idCost+";";
         try{
             PreparedStatement ps=connection.prepareStatement(update);
-            ResultSet rs = ps.executeQuery();
+            ps.executeUpdate();
 
         } catch(SQLException e){
             System.err.println(e);
@@ -114,7 +114,7 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
         Cost cost = null;
         try{
             PreparedStatement ps=connection.prepareStatement(update);
-            ResultSet rs = ps.executeQuery();
+            ps.executeUpdate();
 
         } catch(SQLException e){
             System.err.println(e);

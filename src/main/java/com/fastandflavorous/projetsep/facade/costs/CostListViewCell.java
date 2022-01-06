@@ -2,6 +2,8 @@ package com.fastandflavorous.projetsep.facade.costs;
 import com.fastandflavorous.projetsep.CostController;
 import com.fastandflavorous.projetsep.FastAndFlavorousApplication;
 import com.fastandflavorous.projetsep.model.costs.Cost;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -86,6 +88,22 @@ public class CostListViewCell extends ListCell<Cost> {
             amount.setText(String.valueOf(cost.getAmount()));
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             lastModificationDate.setText(dateFormat.format(cost.getLastModificationDate()));
+            delete.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    parent.deleteCost(cost);
+                }
+            });
+            edit.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        parent.editCost(cost);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
             setText(null);
             setGraphic(gridPane);
         }

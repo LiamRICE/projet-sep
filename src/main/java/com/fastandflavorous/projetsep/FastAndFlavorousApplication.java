@@ -128,4 +128,28 @@ public class FastAndFlavorousApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    //Costs
+
+    public static void switchToDirectorAddCost() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_cost.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorCosts() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_costs.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEditCost() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_cost.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
