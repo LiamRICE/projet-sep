@@ -16,6 +16,8 @@ public class Slot {
 
     private Date date;
 
+
+
     private List<Employee> listOfAssignedEmploye;
 
     public Slot(int idSlot, String startingTime,String endingTime){
@@ -53,5 +55,17 @@ public class Slot {
 
     public int getIdSlot(){
         return idSlot;
+    }
+
+    public String getStartingTime() {
+        return startingTime;
+    }
+
+    public String getEndingTime() {
+        return endingTime;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

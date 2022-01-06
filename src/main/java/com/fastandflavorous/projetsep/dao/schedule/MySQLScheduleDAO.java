@@ -49,7 +49,7 @@ public class MySQLScheduleDAO extends AbstractScheduleDAO{
         return listOfAssignedEmployee;
     }
 
-    public Slot addSlot(String startingTime, String endingTime,Date date){
+    public Slot addSlot(String startingTime, String endingTime, java.util.Date date){
         Statement stmt = null;
         ResultSet rs = null;
 
