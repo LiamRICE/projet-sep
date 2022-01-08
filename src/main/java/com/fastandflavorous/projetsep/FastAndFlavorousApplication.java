@@ -73,34 +73,6 @@ public class FastAndFlavorousApplication extends Application {
         stage.show();
     }
 
-    public static void switchToDirectorAddProducts() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_product.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToDirectorAddAllergens() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_allergen.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToDirectorAddProductsToMenu() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_product_to_menu.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToDirectorAddAllergensToProduct() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_allergen_to_product.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public static void switchToDirectorEditMenu() throws IOException {
         Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_menu.fxml"));
         Scene scene = new Scene(root);
@@ -108,22 +80,47 @@ public class FastAndFlavorousApplication extends Application {
         stage.show();
     }
 
-    public static void switchToDirectorEditProductsInMenu() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_product_to_menu.fxml"));
+    public static void switchToDirectorHome() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_home.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void switchToDirectorEditProduct() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_product.fxml"));
+    public static void logOff() throws IOException{
+        returnToLoginType();
+    }
+
+    public static void switchToDirectorAddStock() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_stock.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void switchToDirectorEditAllergensInProduct() throws IOException {
-        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_allergen_to_product.fxml"));
+    public static void switchToDirectorStocks() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_stocks.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEmployees() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_employees.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorAddEmployee() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_employee.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEditEmployee() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_employee.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

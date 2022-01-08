@@ -3,6 +3,8 @@ package com.fastandflavorous.projetsep.dao.users;
 import com.fastandflavorous.projetsep.model.users.Client;
 import com.fastandflavorous.projetsep.model.users.Employee;
 
+import java.util.List;
+
 /**
  *
  */
@@ -30,5 +32,11 @@ public abstract class AbstractUserDAO {
      * @return It returns the client if they are found in the database otherwise it returns the null
      */
     public abstract Client getClient(String token);
+
+    public abstract List<Employee> getEmployees();
+
+    public abstract void addEmployee(Employee e);
+
+    public abstract void editEmployee(Employee e);
 
 }

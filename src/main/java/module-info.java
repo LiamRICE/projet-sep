@@ -36,4 +36,9 @@ module com.fastandflavorous.projetsep {
     exports com.fastandflavorous.projetsep.dao.costs;
     exports com.fastandflavorous.projetsep.model.costs;
     exports com.fastandflavorous.projetsep.facade.costs;
+
+    // exports for stocks
+    exports com.fastandflavorous.projetsep.dao.stocks;
+    exports com.fastandflavorous.projetsep.model.stocks;
+    exports com.fastandflavorous.projetsep.facade.stocks;
 }

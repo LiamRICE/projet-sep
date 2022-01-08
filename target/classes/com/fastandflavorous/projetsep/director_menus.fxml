@@ -18,47 +18,18 @@
                                 <Font size="24.0" />
                             </font>
                         </Label>
+                        <Button layoutX="543.0" layoutY="11.0" mnemonicParsing="false" text="Back" onAction="#returnToDirectorHome" />
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <TabPane prefHeight="354.0" prefWidth="598.0" tabClosingPolicy="UNAVAILABLE">
-                            <tabs>
-                                <Tab text="Menus">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                            <children>
-                                                <ListView fx:id="menuListView" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="244.0" prefWidth="571.0" />
-                                                <Button fx:id="refreshMenus" layoutX="511.0" layoutY="286.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Menus" />
-                                                <Button fx:id="add_menu" layoutX="512.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToDirectorAddProductToMenu" text="Add Menu" />
-                                            </children>
-                                        </AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="Products">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                            <children>
-                                                <Button fx:id="refreshProducs" layoutX="501.0" layoutY="285.0" mnemonicParsing="false" onAction="#getAllProducts" text="Get Products" />
-                                                <Button fx:id="add_product" layoutX="502.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToDirectorAddAllergenToProduct" text="Add Product" />
-                                                <ListView fx:id="productListView" editable="false" layoutX="14.0" layoutY="41.0" prefHeight="244.0" prefWidth="571.0" />
-                                            </children>
-                                        </AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="Allergens">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                            <children>
-                                                <ListView fx:id="allergenListView" editable="false" layoutX="14.0" layoutY="41.0" prefHeight="244.0" prefWidth="571.0" />
-                                                <Button fx:id="refreshAllergens" layoutX="496.0" layoutY="285.0" mnemonicParsing="false" onAction="#getAllAllergens" text="Get Allergens" />
-                                                <Button fx:id="add_allergen" layoutX="499.0" layoutY="16.0" mnemonicParsing="false" onAction="#showAllergenInputPane" text="Add Allergen" />
-                                            </children>
-                                        </AnchorPane>
-                                    </content>
-                                </Tab>
-                            </tabs>
-                        </TabPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <ListView fx:id="menuListView" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="244.0" prefWidth="571.0" />
+                                <Button fx:id="refreshMenus" layoutX="511.0" layoutY="286.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Menus" />
+                                <Button fx:id="add_menu" layoutX="512.0" layoutY="13.0" mnemonicParsing="false" onAction="#showMenuInputPane" text="Add Menu" />
+                            </children>
+                        </AnchorPane>
                     </children>
                 </AnchorPane>
             </items>

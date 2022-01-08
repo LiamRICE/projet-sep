@@ -15,7 +15,6 @@ public class Menu {
         this.setImage(image);
         this.setDescription(description);
         this.setPrice(price);
-        this.products = new ArrayList<>();
     }
 
     private String name;
@@ -26,53 +25,16 @@ public class Menu {
 
     private float price;
 
-    private List<Product> products;
-
-
-
-    /**
-     * @return
-     */
-    public List<Allergen> getAllergens() {
-        ArrayList<Allergen> ret = new ArrayList<>();
-        for(Product p : products){
-            ret.add((Allergen) p.getAllergens());
-        }
-        return ret;
-    }
-
-    public List<Product> getProducts(){
-        return this.products;
-    }
-
-    public void setProducts(List<Product> products){
-        this.products.clear();
-        this.products.addAll(products);
-    }
-
-    public void removeProduct(Product product){
-        this.products.remove(product);
-    }
-
-    public void addProduct(Product product){
-        this.products.add(product);
-    }
-
     /**
      * @param markup
      * @return
      */
     private float getDefaultPrice(float markup) {
-        // TODO implement here
         return 0.0f;
     }
 
     public String toString(){
-        String ret = this.getName() +" | ";
-        for(Product product : products){
-            ret += product.toString() + ", ";
-        }
-        ret += " | "+ this.getPrice();
+        String ret = this.getName() + " | " + this.getPrice();
         return ret;
     }
 

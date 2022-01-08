@@ -2,6 +2,7 @@ package com.fastandflavorous.projetsep.factory;
 
 import com.fastandflavorous.projetsep.dao.costs.AbstractCostsDAO;
 import com.fastandflavorous.projetsep.dao.menus.AbstractMenuDAO;
+import com.fastandflavorous.projetsep.dao.stocks.AbstractStockDAO;
 import com.fastandflavorous.projetsep.dao.users.AbstractUserDAO;
 
 public abstract class AbstractFactory {
@@ -29,6 +30,8 @@ public abstract class AbstractFactory {
     public abstract AbstractMenuDAO getMenuDAO();
 
     public abstract AbstractCostsDAO getCostsDAO();
+
+    public abstract AbstractStockDAO getStockDAO();
 
 
 }

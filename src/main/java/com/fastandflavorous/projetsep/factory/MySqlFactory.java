@@ -4,6 +4,8 @@ import com.fastandflavorous.projetsep.dao.costs.AbstractCostsDAO;
 import com.fastandflavorous.projetsep.dao.costs.MySQLCostsDAO;
 import com.fastandflavorous.projetsep.dao.menus.AbstractMenuDAO;
 import com.fastandflavorous.projetsep.dao.menus.MySQLMenuDAO;
+import com.fastandflavorous.projetsep.dao.stocks.AbstractStockDAO;
+import com.fastandflavorous.projetsep.dao.stocks.MySQLStockDAO;
 import com.fastandflavorous.projetsep.dao.users.AbstractUserDAO;
 import com.fastandflavorous.projetsep.dao.users.MySQLUserDAO;
 
@@ -49,6 +51,8 @@ public class MySqlFactory extends AbstractFactory{
 
     public AbstractCostsDAO getCostsDAO(){
         return new MySQLCostsDAO(connection);
-    }
 
+    public AbstractStockDAO getStockDAO(){
+        return new MySQLStockDAO(connection);
+    }
 }

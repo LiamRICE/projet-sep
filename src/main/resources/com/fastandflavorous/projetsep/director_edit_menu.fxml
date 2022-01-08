@@ -30,7 +30,6 @@
                     <Label layoutX="342.0" layoutY="28.0" text="Menu Description :" />
                     <Label layoutX="28.0" layoutY="111.0" text="Menu Price :" />
                     <TextArea fx:id="description_edit" layoutX="343.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" />
-                    <Button layoutX="28.0" layoutY="161.0" mnemonicParsing="false" onAction="#switchToDirectorEditProductInMenu" prefHeight="98.0" prefWidth="294.0" text="Edit products in menu" />
                   <Button layoutX="343.0" layoutY="309.0" mnemonicParsing="false" onAction="#refreshMenuObjects" text="Refresh" />
                 </children>
             </AnchorPane>
