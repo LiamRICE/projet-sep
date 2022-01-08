@@ -8,7 +8,9 @@ public abstract class AbstractCostsFacade {
 
     public abstract List<Cost> getAllCosts();
 
-    public abstract Cost addCost(String label);
+    public abstract Cost addCostWithoutAmount(String label);
+
+    public abstract Cost addCostWithAmount(String label,float amount);
 
     public abstract void deleteCost(int idCost);
 

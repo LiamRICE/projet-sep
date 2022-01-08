@@ -23,8 +23,14 @@ public class CostsFacade extends AbstractCostsFacade{
         }
         return costs;
     }
-    public Cost addCost(String label){
-        Cost cost = costsDAO.addCost(label);
+    public Cost addCostWithoutAmount(String label){
+        Cost cost = costsDAO.addCostWithoutAmount(label);
+        costDashoboard.addCost(cost);
+        return cost;
+    }
+
+    public Cost addCostWithAmount(String label,float amount){
+        Cost cost = costsDAO.addCostWithAmount(label,amount);
         costDashoboard.addCost(cost);
         return cost;
     }

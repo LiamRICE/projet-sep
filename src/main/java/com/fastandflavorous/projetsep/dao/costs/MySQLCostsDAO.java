@@ -51,7 +51,7 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
         return cost;
     }
 
-    public Cost addCost(String label){
+    public Cost addCostWithoutAmount(String label){
         Statement stmt = null;
         ResultSet rs = null;
         int autoIncKeyFromApi = -1;
@@ -60,6 +60,37 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
         try {
             stmt = connection.createStatement();
             String update = "INSERT INTO Cost VALUES(NULL,'"+label+"',"+0+",'"+new java.sql.Date(creationDate.getTime()) +"');";
+            stmt.executeUpdate(
+                    update,
+                    Statement.RETURN_GENERATED_KEYS);
+
+
+
+            rs = stmt.getGeneratedKeys();
+
+            if (rs.next()) {
+                autoIncKeyFromApi = rs.getInt(1);
+            } else {
+
+                // throw an exception from here
+            }
+
+        }
+        catch (Exception e) {
+            System.err.println(e);
+        }
+        return new Cost(autoIncKeyFromApi,label,0,creationDate);
+    }
+
+    public Cost addCostWithAmount(String label,float amount){
+        Statement stmt = null;
+        ResultSet rs = null;
+        int autoIncKeyFromApi = -1;
+        Date creationDate = new Date();
+
+        try {
+            stmt = connection.createStatement();
+            String update = "INSERT INTO Cost VALUES(NULL,'"+label+"',"+amount+",'"+new java.sql.Date(creationDate.getTime()) +"');";
             stmt.executeUpdate(
                     update,
                     Statement.RETURN_GENERATED_KEYS);

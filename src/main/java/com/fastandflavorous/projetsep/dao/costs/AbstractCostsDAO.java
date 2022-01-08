@@ -11,7 +11,9 @@ public abstract class AbstractCostsDAO {
 
     public abstract Cost getCostById(int idCost);
 
-    public abstract Cost addCost(String label);
+    public abstract Cost addCostWithAmount(String label,float amount);
+
+    public abstract Cost addCostWithoutAmount(String label);
 
     public abstract void removeCostById(int idCost);
 
