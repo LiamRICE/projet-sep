@@ -51,7 +51,7 @@ public class MySqlFactory extends AbstractFactory{
 
     public AbstractCostsDAO getCostsDAO(){
         return new MySQLCostsDAO(connection);
-
+    }
     public AbstractStockDAO getStockDAO(){
         return new MySQLStockDAO(connection);
     }
