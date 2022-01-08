@@ -43,6 +43,21 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
         return menuList;
     }
 
+    public Menu getMenu(int id){
+        String query = "SELECT * FROM Menu WHERE idMenu="+id+";";
+        Menu menu = null;
+        try{
+            PreparedStatement ps=connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                menu = new Menu(rs.getString("name"), rs.getString("image"), rs.getString("description"),rs.getFloat("price"));
+            }
+        } catch(SQLException e){
+            System.err.println(e);
+        }
+        return menu;
+    }
+
     public int getMenuIndex(String menuName){
         String query = "SELECT idMenu FROM Menu WHERE name='"+menuName+"';";
         int index = 0;

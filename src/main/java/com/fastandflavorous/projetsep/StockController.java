@@ -1,5 +1,6 @@
 package com.fastandflavorous.projetsep;
 
+import com.fastandflavorous.projetsep.facade.login.AbstractUserFacade;
 import com.fastandflavorous.projetsep.facade.menus.AbstractMenuFacade;
 import com.fastandflavorous.projetsep.facade.menus.MenuCell;
 import com.fastandflavorous.projetsep.facade.stocks.AbstractStockFacade;
@@ -9,6 +10,7 @@ import com.fastandflavorous.projetsep.model.stocks.Stock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -18,8 +20,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class StockController {
 
@@ -38,7 +42,7 @@ public class StockController {
      * Default constructor
      */
     public StockController() {
-        this.facade = AbstractStockFacade.getFacade();
+        facade = AbstractStockFacade.getFacade();
     }
 
     public void returnToDirectorStocks() throws IOException {

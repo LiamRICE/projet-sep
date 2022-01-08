@@ -1,5 +1,6 @@
 package com.fastandflavorous.projetsep;
 
+import com.fastandflavorous.projetsep.facade.costs.CostsFacade;
 import com.fastandflavorous.projetsep.facade.login.AbstractUserFacade;
 import com.fastandflavorous.projetsep.facade.login.EmployeeCell;
 import com.fastandflavorous.projetsep.facade.stocks.AbstractStockFacade;
@@ -9,6 +10,7 @@ import com.fastandflavorous.projetsep.model.users.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -18,7 +20,9 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class EmployeeController {
 

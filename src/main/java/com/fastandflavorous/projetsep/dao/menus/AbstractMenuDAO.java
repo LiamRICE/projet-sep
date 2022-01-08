@@ -33,6 +33,8 @@ public abstract class AbstractMenuDAO {
         return menuDAO;
     }
 
+    public abstract Menu getMenu(int id);
+
     /**
      * @return
      */
