@@ -99,8 +99,8 @@ public class UserFacade extends AbstractUserFacade {
         return ((Employee) this.currentUser).isDirector();
     }
 
-    public void addEmployee(String name, String email, String password, float salary, boolean id){
-        Employee e = new Employee(name, email, getHashedPassword(password), salary, id);
+    public void addEmployee(String name, String email, String password, float salary, boolean id, boolean is){
+        Employee e = new Employee(name, email, getHashedPassword(password), salary, id, is);
         EmployeeManager.getEmployeeManager().addEmployee(e);
         userDao.addEmployee(e);
     }

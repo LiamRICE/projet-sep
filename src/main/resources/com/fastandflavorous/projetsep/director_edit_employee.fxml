@@ -27,6 +27,7 @@
                         <TextField fx:id="emp_salary" layoutX="131.0" layoutY="39.0" />
                         <Label layoutX="32.0" layoutY="43.0" text="Employee Salary :" />
                   <CheckBox fx:id="emp_isDir" layoutX="32.0" layoutY="84.0" mnemonicParsing="false" text="Admin Privileges" />
+                  <CheckBox fx:id="emp_isHire" selected="true" layoutX="32.0" layoutY="115.0" mnemonicParsing="false" text="Fire" />
                     </children>
                 </AnchorPane>
             </items>

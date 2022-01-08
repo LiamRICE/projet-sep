@@ -58,12 +58,14 @@ public class MySQLUserDAO extends AbstractUserDAO {
         String query = "SELECT * FROM Employee WHERE email ='"+email+"';";
         Employee employee = null;
         boolean isDirector = false;
+        boolean isHired = false;
         try{
             PreparedStatement ps=connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 isDirector = rs.getBoolean("isDirector");
-                employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"), isDirector);
+                isHired = rs.getBoolean("isHired");
+                employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"), isDirector, isHired);
             }
 
         } catch(SQLException e){
@@ -98,12 +100,14 @@ public class MySQLUserDAO extends AbstractUserDAO {
         Employee employee = null;
         List<Employee> employeeList = new ArrayList<>();
         boolean isDirector = false;
+        boolean isHired = false;
         try{
             PreparedStatement ps=connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 isDirector = rs.getBoolean("isDirector");
-                employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"), isDirector);
+                isHired = rs.getBoolean("isHired");
+                employee = new Employee(rs.getString("name"), rs.getString("email"), rs.getString("password"),rs.getFloat("salary"), isDirector, isHired);
                 employeeList.add(employee);
             }
 
@@ -139,7 +143,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
     public void addEmployee(Employee employee){
         int id = freeEmployeeIndex();
-        String query = "INSERT INTO Employee VALUES (" + id + ",'" + employee.getEmail() + "','" + employee.getPassword() + "'," + employee.getSalary() + ",'" + employee.getName() + "', "+employee.isDirector()+");";
+        String query = "INSERT INTO Employee VALUES (" + id + ",'" + employee.getEmail() + "','" + employee.getPassword() + "'," + employee.getSalary() + ",'" + employee.getName() + "', "+employee.isDirector()+","+employee.isHired()+");";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.executeUpdate();
@@ -149,7 +153,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
     }
 
     public void editEmployee(Employee e){
-        String query = "UPDATE Employee SET email='" + e.getEmail() + "', password='" + e.getPassword() + "', salary=" + e.getSalary() + ", isDirector="+e.isDirector()+" WHERE name='"+e.getName()+"';";
+        String query = "UPDATE Employee SET email='" + e.getEmail() + "', password='" + e.getPassword() + "', salary=" + e.getSalary() + ", isDirector="+e.isDirector()+", isHired="+e.isHired()+" WHERE name='"+e.getName()+"';";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.executeUpdate();

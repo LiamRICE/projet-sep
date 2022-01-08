@@ -55,7 +55,7 @@ public abstract class  AbstractUserFacade {
 
     public abstract boolean isCurrentUserDirector();
 
-    public abstract void addEmployee(String name, String email, String password, float salary, boolean id);
+    public abstract void addEmployee(String name, String email, String password, float salary, boolean id, boolean is);
 
     public abstract List<Employee> getEmployees();
 

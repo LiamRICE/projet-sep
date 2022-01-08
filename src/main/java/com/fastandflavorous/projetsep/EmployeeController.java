@@ -29,7 +29,7 @@ public class EmployeeController {
     @FXML
     TextField emp_name, emp_email, emp_salary;
     @FXML
-    CheckBox emp_isDir;
+    CheckBox emp_isDir, emp_isHire;
 
     private static Employee currentEmployee;
 
@@ -88,9 +88,11 @@ public class EmployeeController {
     public void editEmployee() throws IOException {
         String salary = emp_salary.getText() == "" ? "0f" : emp_salary.getText();
         Boolean isDirector = emp_isDir.isSelected();
+        Boolean isHired = emp_isHire.isSelected();
         float sal = Float.parseFloat(salary);
         currentEmployee.setSalary(sal);
         currentEmployee.setIsDir(isDirector);
+        currentEmployee.setHired(isHired);
         facade.editEmployee(currentEmployee);
         currentEmployee = null;
         returnToDirectorEmployees();
@@ -103,7 +105,7 @@ public class EmployeeController {
         String email = emp_email.getText();
         Boolean isDirector = emp_isDir.isSelected();
         float sal = Float.parseFloat(salary);
-        facade.addEmployee(name, email, password, sal, isDirector);
+        facade.addEmployee(name, email, password, sal, isDirector, true);
         returnToDirectorEmployees();
     }
 }
