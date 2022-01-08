@@ -73,7 +73,7 @@ public class CostController implements Initializable {
     }
 
     public void addCost() throws IOException {
-        facade.addCost(label_cost_input.getText());
+        facade.addCostWithoutAmount(label_cost_input.getText());
         FastAndFlavorousApplication.switchToDirectorCosts();
 
     }
