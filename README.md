@@ -7,9 +7,11 @@ Open the project in IntelliJ IDEA. Navigate to src/main/java/com/fastandflavorou
 Login for the director is :
 - Email : dir@fast.com
 - Password : dir
+
 Login for an employee is :
 - Email : 
 - Password : 
+
 A client can access without any credentials.
 # Documentation
 The documentation can be found in the 'doc' folder.
