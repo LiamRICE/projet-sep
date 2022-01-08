@@ -15,6 +15,10 @@ public class DirectorController {
         FastAndFlavorousApplication.switchToDirectorStocks();
     }
 
+    public void switchToDirectorEmployees() throws IOException {
+        FastAndFlavorousApplication.switchToDirectorEmployees();
+    }
+
     public void logOut() throws IOException {
         FastAndFlavorousApplication.logOff();
     }

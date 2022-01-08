@@ -2,8 +2,8 @@ package com.fastandflavorous.projetsep;
 
 import com.fastandflavorous.projetsep.facade.menus.AbstractMenuFacade;
 import com.fastandflavorous.projetsep.facade.menus.MenuCell;
-import com.fastandflavorous.projetsep.facade.menus.StockCell;
 import com.fastandflavorous.projetsep.facade.stocks.AbstractStockFacade;
+import com.fastandflavorous.projetsep.facade.stocks.StockCell;
 import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.stocks.Stock;
 import javafx.collections.FXCollections;

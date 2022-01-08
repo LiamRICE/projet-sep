@@ -23,8 +23,9 @@
                 </AnchorPane>
                 <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="31.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorMenus" prefHeight="121.0" prefWidth="171.0" text="Manage Menus" />
-                  <Button layoutX="227.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorStocks" prefHeight="121.0" prefWidth="171.0" text="Manage Stocks" />
+                  <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorMenus" prefHeight="121.0" prefWidth="171.0" text="Manage Menus" />
+                  <Button layoutX="214.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorStocks" prefHeight="121.0" prefWidth="171.0" text="Manage Stocks" />
+                  <Button layoutX="413.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorEmployees" prefHeight="121.0" prefWidth="171.0" text="Manage Employees" />
                </children>
                 </AnchorPane>
             </items>

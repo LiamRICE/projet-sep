@@ -54,6 +54,10 @@ public class Employee extends User {
         return salary;
     }
 
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
     /**
      */
     public void setEmail(String email) {
@@ -74,6 +78,14 @@ public class Employee extends User {
 
     public boolean isDirector(){
         return this.isDirector;
+    }
+
+    public void setIsDir(boolean id){
+        this.isDirector = id;
+    }
+
+    public String toString(){
+        return this.getName() + " : " + this.email + " - " + this.salary;
     }
 
 }

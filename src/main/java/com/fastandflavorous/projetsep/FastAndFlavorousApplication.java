@@ -104,4 +104,25 @@ public class FastAndFlavorousApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void switchToDirectorEmployees() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_employees.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorAddEmployee() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_employee.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEditEmployee() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_employee.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
