@@ -15,6 +15,7 @@
                                 <Font size="24.0" />
                             </font>
                         </Label>
+                        <Button layoutX="543.0" layoutY="11.0" mnemonicParsing="false" text="Back" onAction="#returnToDirectorHome" />
                     </children>
                 </AnchorPane>
                 <VBox prefHeight="400.0" prefWidth="640.0" >

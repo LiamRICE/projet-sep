@@ -26,7 +26,6 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
             PreparedStatement ps=connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                System.out.println("yo");
                 costs.add(new Cost(rs.getInt("idCost"),rs.getString("label"),rs.getFloat("amount"),rs.getDate("lastModificationDate")));
             }
 
@@ -76,8 +75,6 @@ public class MySQLCostsDAO extends AbstractCostsDAO {
                 // throw an exception from here
             }
 
-            System.out.println("Key returned from getGeneratedKeys():"
-                    + autoIncKeyFromApi);
         }
         catch (Exception e) {
             System.err.println(e);

@@ -108,4 +108,8 @@ public class CostController implements Initializable {
         }
         FastAndFlavorousApplication.switchToDirectorCosts();
     }
+
+    public void returnToDirectorHome() throws IOException{
+        FastAndFlavorousApplication.switchToDirectorHome();
+    }
 }
