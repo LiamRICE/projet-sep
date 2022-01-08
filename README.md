@@ -9,8 +9,8 @@ Login for the director is :
 - Password : dir
 
 Login for an employee is :
-- Email : 
-- Password : 
+- Email : steve@fast.com
+- Password : password
 
 A client can access without any credentials.
 # Documentation
