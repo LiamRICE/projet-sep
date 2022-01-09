@@ -39,7 +39,7 @@ public class MySQLScheduleDAO extends AbstractScheduleDAO{
             PreparedStatement ps=connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Employee employee = new Employee(rs.getString("name"),rs.getString("email"), rs.getString("password"),rs.getFloat("salary"),rs.getBoolean("isDirector"));
+                Employee employee = new Employee(rs.getString("name"),rs.getString("email"), rs.getString("password"),rs.getFloat("salary"),false,false);
                 listOfAssignedEmployee.add(employee);
             }
 
