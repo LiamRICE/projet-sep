@@ -20,6 +20,8 @@ public class Employee extends User {
     /**
      * 
      */
+    private int idEmployee;
+
     private String email;
 
     private boolean isDirector;
@@ -35,6 +37,10 @@ public class Employee extends User {
      * 
      */
     private float salary;
+
+    public int getIdEmployee(){
+        return idEmployee;
+    }
 
     /**
      * @return the email of the Employee
