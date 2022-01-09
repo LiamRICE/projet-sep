@@ -8,8 +8,8 @@ public class Director extends Employee {
     /**
      * Default constructor
      */
-    public Director(String name, String email, String password, float salary, boolean id) {
-        super(name, email, password, salary, id);
+    public Director(String name, String email, String password, float salary, boolean id, boolean is) {
+        super(name, email, password, salary, id, is);
     }
 
     /**

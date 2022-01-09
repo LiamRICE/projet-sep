@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -18,7 +19,6 @@ import java.util.*;
 /**
  * 
  */
-// TODO - menus and products cannot be shown in the same list
 public class MenuController {
 
     @FXML

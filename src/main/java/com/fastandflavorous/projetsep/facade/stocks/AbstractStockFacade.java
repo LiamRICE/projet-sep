@@ -1,50 +1,40 @@
 package com.fastandflavorous.projetsep.facade.stocks;
 
+import com.fastandflavorous.projetsep.facade.costs.AbstractCostsFacade;
+import com.fastandflavorous.projetsep.facade.costs.CostsFacade;
 import com.fastandflavorous.projetsep.facade.menus.AbstractMenuFacade;
 import com.fastandflavorous.projetsep.facade.menus.MenuFacade;
 import com.fastandflavorous.projetsep.factory.AbstractFactory;
+import com.fastandflavorous.projetsep.model.costs.Cost;
+import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.stocks.Stock;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractStockFacade {
+public abstract class AbstractStockFacade {
 
-    private AbstractFactory factory;
+    protected AbstractFactory factory;
+    protected AbstractCostsFacade costFacade;
     /**
      * Default constructor
      */
     protected AbstractStockFacade() {
         this.factory = AbstractFactory.getFactory();
+        this.costFacade = new CostsFacade();
     }
 
     public static AbstractStockFacade getFacade(){
         return new StockFacade();
     }
 
-    public List<Stock> getStocks(){
-        return this.factory.getStockDAO().getStocks();
-    }
+    public abstract List<Stock> getStocks();
 
-    public void dumpStock(String name, int quantity){
-        int idMenu = factory.getMenuDAO().getMenuIndex(name);
-        editStock(idMenu, -quantity);
-    }
+    public abstract void dumpStock(String name, int quantity);
 
-    public void buyStock(String name, int quantity){
-        System.out.println(name);
-        int idMenu = factory.getMenuDAO().getMenuIndex(name);
-        editStock(idMenu, quantity);
-        // add to costs
-    }
+    public abstract void buyStock(String name, int quantity);
 
-    public void editStock(int idStock, int quantity){
-        System.out.println("Menu ID : "+idStock+"\nQuantity : "+quantity);
-        factory.getStockDAO().editStock(idStock, quantity);
-    }
+    public abstract void editStock(int idStock, int quantity);
 
-    public void useStock(String name, int quantity){
-        int idMenu = factory.getMenuDAO().getMenuIndex(name);
-        editStock(idMenu, -quantity);
-    }
+    public abstract void useStock(String name, int quantity);
 }

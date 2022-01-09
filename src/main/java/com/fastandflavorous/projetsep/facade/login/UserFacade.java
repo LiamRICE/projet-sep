@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
+import java.util.List;
 
 /**
  * 
@@ -85,7 +86,6 @@ public class UserFacade extends AbstractUserFacade {
         if(e!=null) {
             String hashedEnteredPassword = getHashedPassword(password);
             if (hashedEnteredPassword.equals(e.getPassword())) {
-               EmployeeManager.getEmployeeManager().addEmployee(e);
                 return true;
             }else{
                 return false;
@@ -97,6 +97,21 @@ public class UserFacade extends AbstractUserFacade {
 
     public boolean isCurrentUserDirector(){
         return ((Employee) this.currentUser).isDirector();
+    }
+
+    public void addEmployee(String name, String email, String password, float salary, boolean id, boolean is){
+        Employee e = new Employee(name, email, getHashedPassword(password), salary, id, is);
+        EmployeeManager.getEmployeeManager().addEmployee(e);
+        userDao.addEmployee(e);
+    }
+
+    public List<Employee> getEmployees(){
+        return userDao.getEmployees();
+    }
+
+    @Override
+    public void editEmployee(Employee e) {
+        userDao.editEmployee(e);
     }
 
 
