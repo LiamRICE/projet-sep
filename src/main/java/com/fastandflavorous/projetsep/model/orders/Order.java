@@ -8,7 +8,7 @@ import java.util.List;
 public class Order {
 
     private List<Menu> menus;
-    private String id;
+    private int id;
     private boolean paid;
     private boolean completed;
     private boolean fullfilled;
@@ -17,7 +17,7 @@ public class Order {
     /**
      * Default constructor
      */
-    public Order(String id,ArrayList<Menu> menus,boolean paid,boolean completed,boolean fullfilled){
+    public Order(int id,ArrayList<Menu> menus,boolean paid,boolean completed,boolean fullfilled){
         this.id = id;
         this.menus = new ArrayList<Menu>(menus);
         this.paid = paid;
@@ -26,7 +26,7 @@ public class Order {
         this.price = 0;
     }
 
-    public Order(String id,boolean paid,boolean completed,boolean fullfilled, double price){
+    public Order(int id,boolean paid,boolean completed,boolean fullfilled, double price){
         this.id = id;
         this.menus = new ArrayList<Menu>();
         this.paid = paid;
@@ -39,7 +39,7 @@ public class Order {
         return menus;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

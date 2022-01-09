@@ -29,7 +29,7 @@ public class MySQLOrderDAO extends AbstractOrderDAO {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                order = new Order(rs.getString("idOrder"), true, true, true, Double.parseDouble(rs.getString("price")));
+                order = new Order(rs.getInt("idOrder"), true, true, true, Double.parseDouble(rs.getString("price")));
                 orderList.add(order);
             }
         } catch (SQLException e) {
@@ -39,13 +39,13 @@ public class MySQLOrderDAO extends AbstractOrderDAO {
     }
 
     @Override
-    public Order getOrder(String id) {
+    public Order getOrder(int id) {
         String query = "SELECT * FROM Order WHERE Order.idOrder = id;";
         Order order = null;
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            order = new Order(rs.getString("idOrder"), true, true, true, Double.parseDouble(rs.getString("price")));
+            order = new Order(rs.getInt("idOrder"), true, true, true, Double.parseDouble(rs.getString("price")));
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -55,7 +55,7 @@ public class MySQLOrderDAO extends AbstractOrderDAO {
 
     @Override
     public void addOrder(Order order) {
-        String query = "INSERT INTO Order VALUES (" + order.getId() + ",'" + order.isPaid() + "','" + order.isFullfilled() + "'," + order.getPrice() + ");";
+        String query = "INSERT INTO Order VALUES (" + getMaxId() + ",'" + order.isPaid() + "','" + order.isFullfilled() + "'," + order.getPrice() + ");";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.executeUpdate();
@@ -83,5 +83,26 @@ public class MySQLOrderDAO extends AbstractOrderDAO {
         } catch (SQLException e) {
             System.err.println(e);
         }
+    }
+
+    private int getMaxId(){
+        String query = "SELECT idOrder FROM Order;";
+        List<Integer> orderList = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                orderList.add(rs.getInt("idOrder"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        int max = 0;
+        for(Integer x : orderList){
+            if(x>max){
+                max = x;
+            }
+        }
+        return max+1;
     }
 }

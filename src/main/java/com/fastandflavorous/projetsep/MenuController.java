@@ -18,15 +18,14 @@ import java.util.*;
 /**
  * 
  */
-// TODO - menus and products cannot be shown in the same list
 public class MenuController {
 
     @FXML
     AnchorPane listPane;
     @FXML
-    ListView menuListView, productListView, allergenListView, products_available_to_add, products_added, allergens_available_to_add, allergens_added;
+    ListView menuListView;
     @FXML
-    TextField name_input, image_input, image_edit, price_input, price_edit, p_cost_input, p_cost_edit, p_name_input, a_name_input;
+    TextField name_input, image_input, image_edit, price_input, price_edit;
     @FXML
     TextArea description_input, description_edit;
 

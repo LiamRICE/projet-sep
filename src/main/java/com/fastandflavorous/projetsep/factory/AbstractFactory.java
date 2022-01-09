@@ -1,6 +1,7 @@
 package com.fastandflavorous.projetsep.factory;
 
 import com.fastandflavorous.projetsep.dao.menus.AbstractMenuDAO;
+import com.fastandflavorous.projetsep.dao.orders.AbstractOrderDAO;
 import com.fastandflavorous.projetsep.dao.users.AbstractUserDAO;
 
 public abstract class AbstractFactory {
@@ -26,6 +27,8 @@ public abstract class AbstractFactory {
     public abstract AbstractUserDAO getUserDAO();
 
     public abstract AbstractMenuDAO getMenuDAO();
+
+    public abstract AbstractOrderDAO getOrderDAO();
 
 
 }

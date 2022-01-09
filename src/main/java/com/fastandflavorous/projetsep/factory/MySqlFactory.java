@@ -2,6 +2,8 @@ package com.fastandflavorous.projetsep.factory;
 
 import com.fastandflavorous.projetsep.dao.menus.AbstractMenuDAO;
 import com.fastandflavorous.projetsep.dao.menus.MySQLMenuDAO;
+import com.fastandflavorous.projetsep.dao.orders.AbstractOrderDAO;
+import com.fastandflavorous.projetsep.dao.orders.MySQLOrderDAO;
 import com.fastandflavorous.projetsep.dao.users.AbstractUserDAO;
 import com.fastandflavorous.projetsep.dao.users.MySQLUserDAO;
 
@@ -43,6 +45,10 @@ public class MySqlFactory extends AbstractFactory{
 
     public AbstractMenuDAO getMenuDAO(){
         return new MySQLMenuDAO(connection);
+    }
+
+    public AbstractOrderDAO getOrderDAO(){
+        return new MySQLOrderDAO(connection);
     }
 
 }

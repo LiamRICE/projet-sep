@@ -4,6 +4,7 @@ package com.fastandflavorous.projetsep.facade.orders;
 import com.fastandflavorous.projetsep.factory.AbstractFactory;
 import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.menus.MenuManager;
+import com.fastandflavorous.projetsep.model.orders.Order;
 
 
 import java.util.List;
@@ -30,30 +31,15 @@ public class AbstractOrderFacade {
         return factory.getMenuDAO().getMenus();
     }
 
-    /**
-     * @param menu
-     * @return
-     */
-    public void addMenuToOrder(Menu menu) {
-        MenuManager.getMenuManager().addMenu(menu);
-        factory.getMenuDAO().addMenu(menu);
+    public void addOrder(Order order){
+        factory.getOrderDAO().addOrder(order);
+
     }
 
-    /**
-     * @param menu
-     * @return
-     */
-    public void removeToOrder(Menu menu) {
-        MenuManager.getMenuManager().addMenu(menu);
-        factory.getMenuDAO().addMenu(menu);
-    }
+    public List<Order> getOrders(){return factory.getOrderDAO().getOrders();}
 
-    /**
-     * @param menu
-     * @return
-     */
-    public void deleteMenu(Menu menu) {
-        MenuManager.getMenuManager().removeMenu(menu);
-        factory.getMenuDAO().deleteMenu(menu);
-    }
+    public Order getOrder(int id){return factory.getOrderDAO().getOrder(id);}
+
+
+
 }
