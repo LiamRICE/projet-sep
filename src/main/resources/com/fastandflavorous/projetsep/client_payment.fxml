@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fastandflavorous.projetsep.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fastandflavorous.projetsep.OrderController">
     <children>
         <SplitPane dividerPositions="0.12311557788944724" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
             <items>
@@ -15,19 +15,15 @@
                                 <Font size="24.0" />
                             </font>
                         </Label>
-                        <Button layoutX="543.0" layoutY="11.0" mnemonicParsing="false" onAction="#returnToDirectorHome" text="Back" />
+                        <Button layoutX="543.0" layoutY="11.0" mnemonicParsing="false" onAction="#returnToHome" text="Back" />
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <ListView fx:id="menuListView" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="244.0" prefWidth="571.0" />
-                                <Button fx:id="refreshMenus" layoutX="511.0" layoutY="286.0" mnemonicParsing="false" onAction="#getAllMenus" text="Get Menus" />
-                                <Button fx:id="add_menu" layoutX="512.0" layoutY="13.0" mnemonicParsing="false" onAction="#showMenuInputPane" text="Add Menu" />
+                                <Button fx:id="payNow" layoutX="108.0" layoutY="136.0" mnemonicParsing="false" onAction="#commitOrder" prefHeight="74.0" prefWidth="154.0" text="Pay now" />
+                                <Button fx:id="payLater" layoutX="331.0" layoutY="136.0" mnemonicParsing="false" onAction="#commitOrder" prefHeight="74.0" prefWidth="154.0" text="Pay later" />
+                  <Label layoutX="262.0" layoutY="50.0" />
                             </children>
-                        </AnchorPane>
-                    </children>
                 </AnchorPane>
             </items>
         </SplitPane>

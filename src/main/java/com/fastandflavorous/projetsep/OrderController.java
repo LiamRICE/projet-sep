@@ -5,31 +5,29 @@ import com.fastandflavorous.projetsep.facade.menus.MenuCell;
 import com.fastandflavorous.projetsep.facade.orders.AbstractOrderFacade;
 import com.fastandflavorous.projetsep.facade.orders.MenusCell;
 import com.fastandflavorous.projetsep.facade.orders.OrderCell;
+import com.fastandflavorous.projetsep.facade.orders.OrdersCell;
 import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.orders.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderController {
     @FXML
     AnchorPane listPane;
     @FXML
-    ListView menuListView, menuOrderedListView;
+    ListView menuListView, menuOrderedListView, employeeOrderListView;
     @FXML
-    TextField client_name;
-    @FXML
-    TextArea client_input;
+    Button payNow;
 
     private static Order currentOrder = new Order(0, false, false, false, 0.);
 
@@ -83,6 +81,31 @@ public class OrderController {
         stage.show();
     }
 
+    public void getOrdersForEmployees(){
+        Stage stage = (Stage) this.listPane.getScene().getWindow();
+        ObservableList<Order> list = FXCollections.observableArrayList();
+        list.addAll(getOrders());
+        employeeOrderListView.setItems(list);
+        employeeOrderListView.setCellFactory(new Callback<ListView<Order>, ListCell<Order>>() {
+            @Override
+            public ListCell<Order> call(ListView<Order> param) {
+                return new OrdersCell();
+            }
+        });
+        stage.show();
+    }
+
+    public List<Order> getOrders(){
+        List<Order> orders = orderFacade.getOrders();
+        List<Order> ret = new ArrayList<>();
+        for(Order o : orders){
+            if(!o.isPaid() || !o.isFullfilled()){
+                ret.add(o);
+            }
+        }
+        return ret;
+    }
+
     public static void addMenuToOrder(Menu menu){
         currentOrder.addMenuToOrder(menu);
     }
@@ -95,7 +118,23 @@ public class OrderController {
         return orderFacade.getMenus();
     }
 
-    public void commitOrder(){
+    public void commitOrder(ActionEvent e) throws IOException{
+        Object src = e.getSource();
+        if(src == payNow){
+            currentOrder.setPaid(true);
+        }
         orderFacade.addOrder(currentOrder);
+        returnToHome();
+    }
+
+    public static void fulfillOrder(Order order){
+        System.out.println(order);
+        order.setFullfilled(true);
+        orderFacade.editOrder(order);
+    }
+
+    public static void payOrder(Order order){
+        order.setPaid(true);
+        orderFacade.editOrder(order);
     }
 }

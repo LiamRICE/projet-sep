@@ -70,11 +70,15 @@ public class Order {
      *
      */
     public double getPrice(){
-        double price = 0;
-        for(Menu m : this.menus){
-            price+= m.getPrice();
+        if(this.price != 0){
+            return this.price;
+        }else{
+            double price = 0;
+            for(Menu m : this.menus){
+                price+= m.getPrice();
+            }
+            return price;
         }
-        return price;
     }
 
     /**
@@ -91,4 +95,8 @@ public class Order {
         this.menus.remove(menu);
     }
 
+
+    public String toString(){
+        return "Order " + this.id + " | " + this.price;
+    }
 }

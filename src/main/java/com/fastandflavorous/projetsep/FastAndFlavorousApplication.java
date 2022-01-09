@@ -163,4 +163,11 @@ public class FastAndFlavorousApplication extends Application {
         stage.show();
     }
 
+    public static void switchToEmployee() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("employee_order.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

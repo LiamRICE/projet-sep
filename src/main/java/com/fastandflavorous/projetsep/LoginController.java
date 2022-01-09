@@ -65,11 +65,12 @@ public class LoginController {
      */
     @FXML
     public void handleEmployeeLogin() throws IOException {
+        this.employeeWelcomeLabel.setText("Processing...");
         if(employeeLogin(emailInput.getText(), passwordInput.getText())) {
             if(facade.isCurrentUserDirector()) {
                 FastAndFlavorousApplication.switchToDirectorHome();
             }else{
-
+                FastAndFlavorousApplication.switchToEmployee();
             }
         }else{
             this.employeeWelcomeLabel.setText("DENIED!");
