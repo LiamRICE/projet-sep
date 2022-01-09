@@ -43,6 +43,35 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
         return menuList;
     }
 
+    public Menu getMenu(int id){
+        String query = "SELECT * FROM Menu WHERE idMenu="+id+";";
+        Menu menu = null;
+        try{
+            PreparedStatement ps=connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                menu = new Menu(rs.getString("name"), rs.getString("image"), rs.getString("description"),rs.getFloat("price"));
+            }
+        } catch(SQLException e){
+            System.err.println(e);
+        }
+        return menu;
+    }
+
+    public int getMenuIndex(String menuName){
+        String query = "SELECT idMenu FROM Menu WHERE name='"+menuName+"';";
+        int index = 0;
+        try{
+            PreparedStatement ps=connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            index = rs.getInt("idMenu");
+        } catch(SQLException e){
+            System.err.println(e);
+        }
+        return index;
+    }
+
     private int freeMenuIndex(){
         int index = 0;
         String query = "SELECT idMenu FROM Menu;";
@@ -71,8 +100,11 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
     public void addMenu(Menu menu){
         int id = freeMenuIndex();
         String query = "INSERT INTO Menu VALUES (" + id + ",'" + menu.getName() + "','" + menu.getImage() + "','" + menu.getDescription() + "'," + menu.getPrice() + ");";
+        String supplement = "INSERT INTO Stock VALUES ("+id+", 0);";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(supplement);
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
@@ -80,9 +112,13 @@ public class MySQLMenuDAO extends AbstractMenuDAO {
     }
 
     public void deleteMenu(Menu menu) {
+        int idMenu = getMenuIndex(menu.getName());
         String query = "DELETE FROM Menu WHERE name='" + menu.getName() + "';";
+        String supp = "DELETE FROM Stock WHERE idProduct='" + idMenu + "';";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(supp);
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);

@@ -33,12 +33,18 @@ public abstract class AbstractMenuDAO {
         return menuDAO;
     }
 
+    public abstract Menu getMenu(int id);
+
     /**
      * @return
      */
     public List<Menu> getMenus() {
         return null;
     }
+
+    public int getMenuIndex(String menuName){
+        return 0;
+    };
 
     /**
      * @param menu

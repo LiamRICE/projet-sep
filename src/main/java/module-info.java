@@ -15,6 +15,7 @@ module com.fastandflavorous.projetsep {
 
     // opens to FXML
     opens com.fastandflavorous.projetsep to javafx.fxml;
+    opens com.fastandflavorous.projetsep.facade.costs to javafx.fxml;
 
     // exports main package and tests
     exports com.fastandflavorous.projetsep;
@@ -30,4 +31,19 @@ module com.fastandflavorous.projetsep {
     exports com.fastandflavorous.projetsep.model.menus;
     exports com.fastandflavorous.projetsep.facade.menus;
     exports com.fastandflavorous.projetsep.factory;
+
+    // exports for costs
+    exports com.fastandflavorous.projetsep.dao.costs;
+    exports com.fastandflavorous.projetsep.model.costs;
+    exports com.fastandflavorous.projetsep.facade.costs;
+
+    // exports for stocks
+    exports com.fastandflavorous.projetsep.dao.stocks;
+    exports com.fastandflavorous.projetsep.model.stocks;
+    exports com.fastandflavorous.projetsep.facade.stocks;
+
+    // exports for stocks
+    exports com.fastandflavorous.projetsep.dao.restaurant;
+    exports com.fastandflavorous.projetsep.model.restaurant;
+
 }

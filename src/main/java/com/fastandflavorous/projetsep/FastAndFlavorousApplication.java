@@ -104,4 +104,63 @@ public class FastAndFlavorousApplication extends Application {
     public static void logOff() throws IOException{
         returnToLoginType();
     }
+
+    public static void switchToDirectorAddStock() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_stock.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorStocks() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_stocks.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEmployees() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_employees.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorAddEmployee() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_employee.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEditEmployee() throws IOException{
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_employee.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //Costs
+
+    public static void switchToDirectorAddCost() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_add_cost.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorCosts() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_costs.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToDirectorEditCost() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_cost.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

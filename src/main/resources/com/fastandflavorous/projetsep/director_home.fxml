@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fastandflavorous.projetsep.tests.login.DirectorController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fastandflavorous.projetsep.DirectorController">
     <children>
         <SplitPane dividerPositions="0.12311557788944724" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
             <items>
@@ -18,12 +15,15 @@
                                 <Font size="24.0" />
                             </font>
                         </Label>
-                  <Button layoutX="525.0" layoutY="11.0" mnemonicParsing="false" text="Log Out" onAction="#logOut" />
+                  <Button layoutX="525.0" layoutY="11.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="listPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="31.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorMenus" prefHeight="121.0" prefWidth="171.0" text="Manage Menus" />
+                  <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorMenus" prefHeight="121.0" prefWidth="171.0" text="Manage Menus" />
+                  <Button layoutX="214.0" layoutY="185.0" mnemonicParsing="false" onAction="#switchToDirectorStocks" prefHeight="121.0" prefWidth="171.0" text="Manage Stocks" />
+                  <Button layoutX="413.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorEmployees" prefHeight="121.0" prefWidth="171.0" text="Manage Employees" />
+                   <Button layoutX="213.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToDirectorCosts" prefHeight="121.0" prefWidth="171.0" text="Manage Costs" />
                </children>
                 </AnchorPane>
             </items>

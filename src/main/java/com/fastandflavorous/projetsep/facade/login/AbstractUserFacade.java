@@ -3,18 +3,36 @@ package com.fastandflavorous.projetsep.facade.login;
 import com.fastandflavorous.projetsep.factory.AbstractFactory;
 import com.fastandflavorous.projetsep.model.users.*;
 
+import java.util.List;
+
 /**
  * 
  */
 public abstract class  AbstractUserFacade {
 
     private AbstractFactory factory;
+    private static UserFacade facade = null;
+    private static Object sync = new Object();
 
     /**
      * Default constructor
      */
     public AbstractUserFacade() {
         this.factory = AbstractFactory.getFactory();
+    }
+
+    public static AbstractUserFacade getFacade(){
+        if(facade != null){
+            return facade;
+        }
+        synchronized (sync) {
+            if (facade == null) {
+                facade = new UserFacade();
+                return facade;
+            }else{
+                return facade;
+            }
+        }
     }
 
     /**
@@ -36,4 +54,10 @@ public abstract class  AbstractUserFacade {
 
 
     public abstract boolean isCurrentUserDirector();
+
+    public abstract void addEmployee(String name, String email, String password, float salary, boolean id, boolean is);
+
+    public abstract List<Employee> getEmployees();
+
+    public abstract void editEmployee(Employee e);
 }
