@@ -87,6 +87,20 @@ public class FastAndFlavorousApplication extends Application {
         stage.show();
     }
 
+    public static void switchToClientOrder() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("client_order.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToClientPayment() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("client_payment.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public static void logOff() throws IOException{
         returnToLoginType();
     }
@@ -144,6 +158,13 @@ public class FastAndFlavorousApplication extends Application {
 
     public static void switchToDirectorEditCost() throws IOException {
         Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("director_edit_cost.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void switchToEmployee() throws IOException {
+        Parent root = FXMLLoader.load(FastAndFlavorousApplication.class.getResource("employee_order.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

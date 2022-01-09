@@ -40,7 +40,7 @@ public abstract class AbstractOrderDAO {
     /**
      * @return
      */
-    public Order getOrder(String id){return null;}
+    public Order getOrder(int id){return null;}
 
     /**
      * @param order
@@ -61,7 +61,7 @@ public abstract class AbstractOrderDAO {
      * @return
      */
     public void deleteOrder(Order order) {
-        System.out.println("Deleting ordeer : "+order.toString());
+        System.out.println("Deleting order : "+order.toString());
     }
 
 

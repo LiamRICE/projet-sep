@@ -1,9 +1,11 @@
 package com.fastandflavorous.projetsep.facade.orders;
 
 
+import com.fastandflavorous.projetsep.facade.stocks.AbstractStockFacade;
 import com.fastandflavorous.projetsep.factory.AbstractFactory;
 import com.fastandflavorous.projetsep.model.menus.Menu;
 import com.fastandflavorous.projetsep.model.menus.MenuManager;
+import com.fastandflavorous.projetsep.model.orders.Order;
 
 
 import java.util.List;
@@ -11,12 +13,15 @@ import java.util.List;
 public class AbstractOrderFacade {
 
     private AbstractFactory factory;
+
+    private AbstractStockFacade stockFacade;
     /**
      * Default constructor
      */
 
     protected AbstractOrderFacade() {
         this.factory = AbstractFactory.getFactory();
+        this.stockFacade = AbstractStockFacade.getFacade();
     }
 
     public static AbstractOrderFacade getFacade(){
@@ -30,30 +35,19 @@ public class AbstractOrderFacade {
         return factory.getMenuDAO().getMenus();
     }
 
-    /**
-     * @param menu
-     * @return
-     */
-    public void addMenuToOrder(Menu menu) {
-        MenuManager.getMenuManager().addMenu(menu);
-        factory.getMenuDAO().addMenu(menu);
+    public void addOrder(Order order){
+        factory.getOrderDAO().addOrder(order);
+        for(Menu m : order.getMenus()){
+            stockFacade.useStock(m.getName(), 1);
+        }
     }
 
-    /**
-     * @param menu
-     * @return
-     */
-    public void removeToOrder(Menu menu) {
-        MenuManager.getMenuManager().addMenu(menu);
-        factory.getMenuDAO().addMenu(menu);
+    public List<Order> getOrders(){return factory.getOrderDAO().getOrders();}
+
+    public Order getOrder(int id){return factory.getOrderDAO().getOrder(id);}
+
+    public void editOrder(Order order){
+        factory.getOrderDAO().editOrder(order);
     }
 
-    /**
-     * @param menu
-     * @return
-     */
-    public void deleteMenu(Menu menu) {
-        MenuManager.getMenuManager().removeMenu(menu);
-        factory.getMenuDAO().deleteMenu(menu);
-    }
 }
