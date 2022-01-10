@@ -22,4 +22,4 @@ com.fastandflavorous.projetsep.model.restaurant
 com.fastandflavorous.projetsep.model.schedule
 com.fastandflavorous.projetsep.model.stocks
 com.fastandflavorous.projetsep.model.users
-com.fastandflavorous.projetsep.tests.login
+com.fastandflavorous.projetsep.tests
