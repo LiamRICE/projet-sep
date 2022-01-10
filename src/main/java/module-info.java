@@ -19,7 +19,7 @@ module com.fastandflavorous.projetsep {
 
     // exports main package and tests
     exports com.fastandflavorous.projetsep;
-    exports com.fastandflavorous.projetsep.tests.login;
+    exports com.fastandflavorous.projetsep.tests;
 
     // exports for login and users
     exports com.fastandflavorous.projetsep.dao.users;
